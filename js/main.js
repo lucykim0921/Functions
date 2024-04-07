@@ -9,9 +9,16 @@ const renderItems = (questions) => {
             <li>
                 <div class="quiz">
                     <div class="question">${question.question}</div>
+                    ${question.questionImage ? `<img src="${question.questionImage}" alt="Question Image">` : ''}
+
                     <div class="answers">
-                        ${question.options.map(option => `<button class="option">${option}</button>`).join('')}
+                        ${question.options.map(option => `
+                            <button class="option">
+                                ${option.text}
+                                ${option.imageUrl ? `<img src="${option.imageUrl}" alt="Option Image">` : ''}
+                            </button>`).join('')}
                     </div>
+
                     <button class="next-button">next</button>
                     <button class="cross-button"><a href="index.html">&#9747</a></button>
                 </div>
