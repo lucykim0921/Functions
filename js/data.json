@@ -17,6 +17,14 @@
         "answer": "less than 1"
     },
 
+    {
+        "question": "What percentage of South Korean population is aged 65 or above?",
+        "option1": "10%",
+        "option2": "18%",
+        "option3": "25%",
+        "option4": "30%",
+        "answer": "18%"
+    },
 
 
 

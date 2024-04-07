@@ -16,6 +16,7 @@
      border-radius: 5px;
      font-size: 15px;
      padding: 10px 20px;
+     border: 1px solid #000;
  }
  
  button:hover {
@@ -88,6 +89,7 @@ h1 {
     position: absolute;
     right: 25px;
     bottom: 25px;
+    border: transparent;
 }
 
 .cross-button {
@@ -95,6 +97,7 @@ h1 {
     position: absolute;
     left: 25px;
     top: 20px;
+    border: transparent;
 }
 
 .cross-button:hover {
