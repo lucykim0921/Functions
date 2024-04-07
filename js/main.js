@@ -23,7 +23,6 @@ const renderItems = (data) => {
                     <button class="next-button">next</button>
                     <button class="cross-button"><a href="index.html">&#9747</a><button>
 
-                
             </div>
             </li>
         `;
