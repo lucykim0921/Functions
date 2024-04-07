@@ -1,107 +1,19 @@
-[
-    {
+{
+    "questions": [
+      {
         "question": "What is the population of South Korea?",
-        "option1": "43 million",
-        "option2": "48 million",
-        "option3": "52 million",
-        "option4": "57 million",
+        "options": ["43 million", "48 million", "52 million", "57 million"],
         "answer": "52 million"
-    },
-
-    {
-        "question": "What is South Korea’s approximate fertility rate, a measure of the total births per a woman’s lifetime?",
-        "option1": "1",
-        "option2": "less than 1",
-        "option3": "2",
-        "option4": "3",
+      },
+      {
+        "question": "What is South Korea’s approximate fertility rate?",
+        "options": ["less than 1", "1", "2", "3"],
         "answer": "less than 1"
-    },
-
-    {
+      },
+      {
         "question": "What percentage of South Korean population is aged 65 or above?",
-        "option1": "10%",
-        "option2": "18%",
-        "option3": "25%",
-        "option4": "30%",
+        "options": ["10%", "18%", "25%", "30%"],
         "answer": "18%"
-    },
-
-
-
-
-
-
-    {
-        "question": "At what year did Korea separate into South and North?",
-        "option1": "1927",
-        "option2": "1935",
-        "option3": "1948",
-        "option4": "1953",
-        "answer": "1948"
-    },
-
-
-
-
-
-
-
-
-
-
-
-
-
-    {
-        "question": "When eating with someone older than you, you should make sure you have the first bite.",
-        "option1": "True",
-        "option2": "False",
-        "answer": "False"
-    },
-
-    {
-        "question": "It’s important to give tips to taxi drivers in South Korea.",
-        "option1": "True",
-        "option2": "False",
-        "answer": "False"
-    },
-
-    {
-        "question": "When handing over/receiving object from strangers or someone older than you, you should use both hands.",
-        "option1": "True",
-        "option2": "False",
-        "answer": "True"
-    },
-
-    {
-        "question": "What is the most common way Korean people greet one another?",
-        "option1": "Bow",
-        "option2": "Hug",
-        "option3": "Rub noses",
-        "option4": "Kiss on the cheek",
-        "answer": "Bow"
-    },
-
-    {
-        "question": "It’s rude to ask people’s ages on a first date.",
-        "option1": "True",
-        "option2": "False",
-        "answer": "False"
-    },
-
-    {
-        "question": "Writing someone’s name in red ink shows extra respect, love, and sincerity.",
-        "option1": "True",
-        "option2": "False",
-        "answer": "False"
-    },
-
-    {
-        "question": "What do Korean people typically do when attending someone’s wedding?",
-        "option1": "Wear a leather bracelet to show respect for the bride & grooms’ parents",
-        "option2": "Prepare some cash in an envelope for the bride & groom",
-        "option3": "Bring a pink rose bouquet to decorate the bride’s waiting room",
-        "option4": "Never take videos when the bride enters to show respect",
-        "answer": "Prepare some cash in an envelope for the bride & groom"
-    }
-]
+      }
+    ]
+  }
