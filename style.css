@@ -10,6 +10,10 @@
      justify-content: center;
      text-align: center;
  }
+
+ .option img {
+    max-width: 130px;
+ }
  
  button {
      cursor: pointer;
