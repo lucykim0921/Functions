@@ -1,410 +1,458 @@
 {
 
+"categories": [
 
 
-    "questions": [
-      {
-        "question": "What is the population of South Korea?",
-        "questionImage": null,
-        "options": [
+{
+    "name": "Demographics/Geography",
+        "questions": [
             {
-                "text": "43 million",
-                "imageUrl": null
-              },
-              {
-                "text": "48 million",
-                "imageUrl": null
-              },
-              {
-                "text": "52 million",
-                "imageUrl": null
-              },
-              {
-                "text": "57 million",
-                "imageUrl": null
-              }
-        ],
-        "answer": "52 million"
-      },
+                "type": "multiple choice",
+                "question": "What is the population of South Korea?",
+                "questionImage": null,
+                "options": [
+                    {
+                        "text": "43 million",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "48 million",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "52 million",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "57 million",
+                        "imageUrl": null
+                    }
+                ],
+                "answer": "52 million"
+            },
 
-
-      {
-        "question": "What is South Korea’s approximate fertility rate?",
-        "questionImage": null,
-        "options": [
             {
-                "text": "43 million",
-                "imageUrl": null
+                "type": "drag-drop",
+                "question": "Place the following cities in order of population, from largest to smallest.",
+                "options": [
+                    {
+                        "text": "43 million",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "48 million",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "52 million",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "57 million",
+                        "imageUrl": null
+                    }
+                ],
+                "answer": ["Seoul", "Busan", "Incheon", "Daegu"]
               },
-              {
-                "text": "48 million",
-                "imageUrl": null
-              },
-              {
-                "text": "52 million",
-                "imageUrl": null
-              },
-              {
-                "text": "57 million",
-                "imageUrl": null
-              }
-        ],
-        "answer": "less than 1"
-      },
 
-      {
-        "question": "What percentage of South Korean population is aged 65 or above?",
-        "questionImage": null,
-        "options": [
+
             {
-                "text": "43 million",
-                "imageUrl": null
-              },
-              {
-                "text": "48 million",
-                "imageUrl": null
-              },
-              {
-                "text": "52 million",
-                "imageUrl": null
-              },
-              {
-                "text": "57 million",
-                "imageUrl": null
-              }
-        ],
-        "answer": "18%"
-      },
+                "type": "multiple choice",
+                "question": "What is South Korea’s approximate fertility rate?",
+                "questionImage": null,
+                "options": [
+                    {
+                        "text": "43 million",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "48 million",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "52 million",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "57 million",
+                        "imageUrl": null
+                    }
+                ],
+                "answer": "less than 1"
+            },
 
-      {
-        "question": "What is the name of this island, a home to natural wonders and Unesco World Heritage Sites?",
-        "questionImage": "images/jeju.jpeg",
-        "options": [
             {
-                "text": "Jeju-do",
-                "imageUrl": null
-              },
-              {
-                "text": "Ulleung-do",
-                "imageUrl": null
-              },
-              {
-                "text": "Wolmi-do",
-                "imageUrl": null
-              },
-              {
-                "text": "Dok-do",
-                "imageUrl": null
-              }
-        ],
-        "answer": "Jeju-do"
-      },
+                "type": "multiple choice",
+                "question": "What percentage of South Korean population is aged 65 or above?",
+                "questionImage": null,
+                "options": [
+                    {
+                        "text": "43 million",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "48 million",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "52 million",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "57 million",
+                        "imageUrl": null
+                    }
+                ],
+                "answer": "18%"
+            },
 
-      {
-        "question": "'Hallasan' is the tallest mountain in South Korea. What is the height of Hallasan?",
-        "questionImage": "images/hallasan.jpeg",
-        "options": [
             {
-                "text": "1500m",
-                "imageUrl": null
-              },
-              {
-                "text": "1720m",
-                "imageUrl": null
-              },
-              {
-                "text": "1860m",
-                "imageUrl": null
-              },
-              {
-                "text": "1950m",
-                "imageUrl": null
-              }
-        ],
-        "answer": "1950m"
-      },
+                "type": "multiple choice",
+                "question": "What is the name of this island, a home to natural wonders and Unesco World Heritage Sites?",
+                "questionImage": "images/jeju.jpeg",
+                "options": [
+                    {
+                        "text": "Jeju-do",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "Ulleung-do",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "Wolmi-do",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "Dok-do",
+                        "imageUrl": null
+                    }
+                ],
+                "answer": "Jeju-do"
+            },
 
-
-
-
-
-
-
-      {
-        "question": "At what year did Korea separate into South and North?",
-        "questionImage": null,
-        "options": [
             {
-                "text": "1927",
-                "imageUrl": null
-              },
-              {
-                "text": "1935",
-                "imageUrl": null
-              },
-              {
-                "text": "1948",
-                "imageUrl": null
-              },
-              {
-                "text": "1953",
-                "imageUrl": null
-              }
-        ],
-        "answer": "1953"
-      },
+                "type": "multiple choice",
+                "question": "'Hallasan' is the tallest mountain in South Korea. What is the height of Hallasan?",
+                "questionImage": "images/hallasan.jpeg",
+                "options": [
+                    {
+                        "text": "1500m",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "1720m",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "1860m",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "1950m",
+                        "imageUrl": null
+                    }
+                ],
+                "answer": "1950m"
+            }
+        ]
+    },
 
-      {
-        "question": "Who created the Korean alphabet 'Hangul'?",
-        "questionImage": null,
-        "options": [
+
+
+
+
+
+{
+    "name": "History",
+        "questions": [
+
             {
-                "text": "King Taejo",
-                "imageUrl": "images/taejo.jpg"
-              },
-              {
-                "text": "King Sejong",
-                "imageUrl": "images/sejong.jpg"
-              },
-              {
-                "text": "Shin Saimdang",
-                "imageUrl": "images/saimdang.jpg"
-              },
-              {
-                "text": "Admiral Yisunshin",
-                "imageUrl": "images/yisunshin.jpeg"
-              }
-        ],
-        "answer": "King Sejong"
-      },
+                "type": "multiple choice",
+                "question": "At what year did Korea separate into South and North?",
+                "questionImage": null,
+                "options": [
+                    {
+                        "text": "1927",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "1935",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "1948",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "1953",
+                        "imageUrl": null
+                    }
+                ],
+                "answer": "1953"
+            },
 
-
-
-
-
-
-
-
-      {
-        "question": "Which South Korean kpop idol member has the most instagram followers (as of April 2024)?",
-        "questionImage": null,
-        "options": [
             {
-                "text": "Jhope - BTS",
-                "imageUrl": "images/jhope.jpeg"
-              },
-              {
-                "text": "V - BTS",
-                "imageUrl": "images/v.jpeg"
-              },
-              {
-                "text": "Jennie - Blackpink",
-                "imageUrl": "images/jennie.jpeg"
-              },
-              {
-                "text": "Lisa - Blackpink",
-                "imageUrl": "images/lisa.jpg"
-              }
-        ],
-        "answer": "Lisa"
-      },
+                "type": "multiple choice",
+                "question": "Who created the Korean alphabet 'Hangul'?",
+                "questionImage": null,
+                "options": [
+                    {
+                        "text": "King Taejo",
+                        "imageUrl": "images/taejo.jpg"
+                    },
+                    {
+                        "text": "King Sejong",
+                        "imageUrl": "images/sejong.jpg"
+                    },
+                    {
+                        "text": "Shin Saimdang",
+                        "imageUrl": "images/saimdang.jpg"
+                    },
+                    {
+                        "text": "Admiral Yisunshin",
+                        "imageUrl": "images/yisunshin.jpeg"
+                    }
+                ],
+                "answer": "King Sejong"
+            }
+    ]
+},
 
-      {
-        "question": "What sports has South Korea won the most Olympics medals in?",
-        "questionImage": null,
-        "options": [
+
+
+
+
+{
+    "name": "Fun Facts",
+        "questions": [
             {
-                "text": "Archery",
-                "imageUrl": "images/archery.jpeg"
-              },
-              {
-                "text": "Short track",
-                "imageUrl": "images/short-track.jpeg"
-              },
-              {
-                "text": "Taekwondo",
-                "imageUrl": "images/taekwondo.jpeg"
-              },
-              {
-                "text": "Wrestling",
-                "imageUrl": "images/wrestling.jpeg"
-              }
-        ],
-        "answer": "Archery"
-      },
+                "type": "multiple choice",
+                "question": "Which South Korean kpop idol member has the most instagram followers (as of April 2024)?",
+                "questionImage": null,
+                "options": [
+                    {
+                        "text": "Jhope - BTS",
+                        "imageUrl": "images/jhope.jpeg"
+                    },
+                    {
+                        "text": "V - BTS",
+                        "imageUrl": "images/v.jpeg"
+                    },
+                    {
+                        "text": "Jennie - Blackpink",
+                        "imageUrl": "images/jennie.jpeg"
+                    },
+                    {
+                        "text": "Lisa - Blackpink",
+                        "imageUrl": "images/lisa.jpg"
+                    }
+                ],
+                "answer": "Lisa"
+            },
 
-      {
-        "question": "What percentage of the South Korean population has the last name of ‘Kim’?",
-        "questionImage": null,
-        "options": [
             {
-                "text": "5%",
-                "imageUrl": null
-              },
-              {
-                "text": "10%",
-                "imageUrl": null
-              },
-              {
-                "text": "20%",
-                "imageUrl": null
-              },
-              {
-                "text": "30%",
-                "imageUrl": null
-              }
-        ],
-        "answer": "20%"
-      },
+                "type": "multiple choice",
+                "question": "What sports has South Korea won the most Olympics medals in?",
+                "questionImage": null,
+                "options": [
+                    {
+                        "text": "Archery",
+                        "imageUrl": "images/archery.jpeg"
+                    },
+                    {
+                        "text": "Short track",
+                        "imageUrl": "images/short-track.jpeg"
+                    },
+                    {
+                        "text": "Taekwondo",
+                        "imageUrl": "images/taekwondo.jpeg"
+                    },
+                    {
+                        "text": "Wrestling",
+                        "imageUrl": "images/wrestling.jpeg"
+                    }
+                ],
+                "answer": "Archery"
+            },
 
-
-
-
-
-
-
-
-
-
-
-      {
-        "question": "In South Korea, when eating with someone older than you, you should make sure you have the first bite.",
-        "questionImage": null,
-        "options": [
             {
-                "text": "True",
-                "imageUrl": null
-              },
-              {
-                "text": "False",
-                "imageUrl": null
-              }
-        ],
-        "answer": "False"
-      },
+                "type": "multiple choice",
+                "question": "What percentage of the South Korean population has the last name of ‘Kim’?",
+                "questionImage": null,
+                "options": [
+                    {
+                        "text": "5%",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "10%",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "20%",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "30%",
+                        "imageUrl": null
+                    }
+                ],
+                "answer": "20%"
+            }
+    ]
+},
 
-      {
-        "question": "It’s important to give tips to the taxi drivers in South Korea.",
-        "questionImage": null,
-        "options": [
-            {
-                "text": "True",
-                "imageUrl": null
-              },
-              {
-                "text": "False",
-                "imageUrl": null
-              }
-        ],
-        "answer": "False"
-      },
 
-      {
-        "question": "In South Korea, when handing over something to strangers or someone older than you, you should use both hands.",
-        "questionImage": null,
-        "options": [
-            {
-                "text": "True",
-                "imageUrl": null
-              },
-              {
-                "text": "False",
-                "imageUrl": null
-              }
-        ],
-        "answer": "True"
-      },
 
-      {
-        "question": "It’s rude to ask people’s ages on a first date in South Korea.",
-        "questionImage": null,
-        "options": [
-            {
-                "text": "True",
-                "imageUrl": null
-              },
-              {
-                "text": "False",
-                "imageUrl": null
-              }
-        ],
-        "answer": "False"
-      },
 
-      {
-        "question": "Writing someone’s name in red ink shows extra respect, love, and sincerity.",
-        "questionImage": null,
-        "options": [
-            {
-                "text": "True",
-                "imageUrl": null
-              },
-              {
-                "text": "False",
-                "imageUrl": null
-              }
-        ],
-        "answer": "False"
-      },
 
-      {
-        "question": "What is the most common way Korean people greet one another?",
-        "questionImage": null,
-        "options": [
-            {
-                "text": "Bow",
-                "imageUrl": null
-              },
-              {
-                "text": "Hug",
-                "imageUrl": null
-              },
-              {
-                "text": "Rub noses",
-                "imageUrl": null
-              },
-              {
-                "text": "Kiss on the cheek",
-                "imageUrl": null
-              }
-        ],
-        "answer": "Bow"
-      },
 
-      {
-        "question": "What is something that Korean people typically do when attending someone’s wedding?",
-        "questionImage": null,
-        "options": [
+
+
+{
+    "name": "Fun Facts",
+        "questions": [
+
+
             {
-                "text": "Wear a leather bracelet to show respect for the bride",
-                "imageUrl": null
-              },
-              {
-                "text": "Prepare cash in an envelope for gift for the bride & groom",
-                "imageUrl": null
-              },
-              {
-                "text": "Bring a pink rose bouquet to decorate the bride’s waiting room",
-                "imageUrl": null
-              },
-              {
-                "text": "Never take videos when the bride enters to show respect",
-                "imageUrl": null
-              }
-        ],
-        "answer": "Prepare cash in an envelope for gift for the bride & groom"
-      }
+                "type": "multiple choice",
+                "question": "In South Korea, when eating with someone older than you, you should make sure you have the first bite.",
+                "questionImage": null,
+                "options": [
+                    {
+                        "text": "True",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "False",
+                        "imageUrl": null
+                    }
+                ],
+                "answer": "False"
+            },
+
+            {
+                "type": "multiple choice",
+                "question": "It’s important to give tips to the taxi drivers in South Korea.",
+                "questionImage": null,
+                "options": [
+                    {
+                        "text": "True",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "False",
+                        "imageUrl": null
+                    }
+                ],
+                "answer": "False"
+            },
+
+            {
+                "type": "multiple choice",
+                "question": "In South Korea, when handing over something to strangers or someone older than you, you should use both hands.",
+                "questionImage": null,
+                "options": [
+                    {
+                        "text": "True",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "False",
+                        "imageUrl": null
+                    }
+                ],
+                "answer": "True"
+            },
+
+            {
+                "type": "multiple choice",
+                "question": "It’s rude to ask people’s ages on a first date in South Korea.",
+                "questionImage": null,
+                "options": [
+                    {
+                        "text": "True",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "False",
+                        "imageUrl": null
+                    }
+                ],
+                "answer": "False"
+            },
+
+            {
+                "type": "multiple choice",
+                "question": "Writing someone’s name in red ink shows extra respect, love, and sincerity.",
+                "questionImage": null,
+                "options": [
+                    {
+                        "text": "True",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "False",
+                        "imageUrl": null
+                    }
+                ],
+                "answer": "False"
+            },
+
+            {
+                "type": "multiple choice",
+                "question": "What is the most common way Korean people greet one another?",
+                "questionImage": null,
+                "options": [
+                    {
+                        "text": "Bow",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "Hug",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "Rub noses",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "Kiss on the cheek",
+                        "imageUrl": null
+                    }
+                ],
+                "answer": "Bow"
+            },
+
+            {
+                "type": "multiple choice",
+                "question": "What is something that Korean people typically do when attending someone’s wedding?",
+                "questionImage": null,
+                "options": [
+                    {
+                        "text": "Wear a leather bracelet to show respect for the bride",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "Prepare cash in an envelope for gift for the bride & groom",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "Bring a pink rose bouquet to decorate the bride’s waiting room",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "Never take videos when the bride enters to show respect",
+                        "imageUrl": null
+                    }
+                ],
+                "answer": "Prepare cash in an envelope for gift for the bride & groom"
+            }
 
       
-
-
-
-
-
-
-
     ]
 
 
 
-  }
+}]}
