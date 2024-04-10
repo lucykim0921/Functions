@@ -175,3 +175,23 @@ h1 {
     width: 8em;
     /* filter: drop-shadow(0 0.3em 0.9em rgba(0, 0, 0, 0.25)); */
   }
+
+
+/* feedback */
+.feedback-correct {
+    color: green;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.feedback-incorrect {
+    color: red;
+    background-color: #edd4d4;
+    border-color: #e6c3c3;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
