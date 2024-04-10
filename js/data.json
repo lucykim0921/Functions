@@ -32,27 +32,27 @@
             },
 
             {
-                "type": "drag-drop",
+                "type": "drag-drop-in-order",
                 "question": "Place the following cities in order of population, from largest to smallest.",
                 "options": [
                     {
-                        "text": "43 million",
-                        "imageUrl": null
+                        "text": "Busan",
+                        "imageUrl": "images/belgium.png"
                     },
                     {
-                        "text": "48 million",
-                        "imageUrl": null
+                        "text": "Seoul",
+                        "imageUrl": "images/belgium.png"
                     },
                     {
-                        "text": "52 million",
-                        "imageUrl": null
+                        "text": "Incheon",
+                        "imageUrl": "images/belgium.png"
                     },
                     {
-                        "text": "57 million",
-                        "imageUrl": null
+                        "text": "Gwangju",
+                        "imageUrl": "images/belgium.png"
                     }
                 ],
-                "answer": ["Seoul", "Busan", "Incheon", "Daegu"]
+                "answer": ["Seoul", "Busan", "Gwanju", "Incheon"]
               },
 
 

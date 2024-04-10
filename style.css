@@ -108,3 +108,43 @@ h1 {
     background-color: transparent;
 }
 
+/* drag */
+
+.drag-items {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.drag-item {
+    display: flex;
+    background-color: red;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 1em;
+    border: 1px dashed #000;
+}
+
+.drop-areas {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.drop-point {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1em;
+    border: 1px dashed #000;
+}
+
+
+
+
+  img {
+    width: 8em;
+    /* filter: drop-shadow(0 0.3em 0.9em rgba(0, 0, 0, 0.25)); */
+  }
