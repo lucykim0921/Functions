@@ -215,6 +215,81 @@
                     }
                 ],
                 "answer": "King Sejong"
+            },
+
+            {
+                "type": "multiple choice",
+                "question": "Who was the first president of South Korea?",
+                "questionImage": null,
+                "options": [
+                    {
+                        "text": "Choi Kyu-hah",
+                        "imageUrl": "images/choi.png"
+                    },
+                    {
+                        "text": "Park Chung-hee",
+                        "imageUrl": "images/park.png"
+                    },
+                    {
+                        "text": "Chun Doo-hwan",
+                        "imageUrl": "images/chun.jpeg"
+                    },
+                    {
+                        "text": "Syngman Rhee",
+                        "imageUrl": "images/syngman.jpeg"
+                    }
+                ],
+                "answer": "Syngman Rhee"
+            },
+
+            {
+                "type": "multiple choice",
+                "question": "Until which year did South Korea maintain the monarchy system?",
+                "questionImage": null,
+                "options": [
+                    {
+                        "text": "1765",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "1838",
+                        "imageUrl": null
+                    },  
+                    {
+                        "text": "1910",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "1945",
+                        "imageUrl": null
+                    }
+                ],
+                "answer": "1910"
+            },
+
+            {
+                "type": "multiple choice",
+                "question": "What year did South Korea host the Summer Olympics?",
+                "questionImage": null,
+                "options": [
+                    {
+                        "text": "1988",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "1992",
+                        "imageUrl": null
+                    },  
+                    {
+                        "text": "2002",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "2018",
+                        "imageUrl": null
+                    }
+                ],
+                "answer": "1910"
             }
     ]
 },
