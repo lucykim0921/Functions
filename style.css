@@ -90,10 +90,9 @@ h1 {
 }
 
 .next-button {
-    position: absolute;
-    right: 25px;
-    bottom: 25px;
-    border: transparent;
+    margin-top: 50px;
+    color: gray;
+    border: solid 1px gray;
 }
 
 .cross-button {
@@ -110,38 +109,61 @@ h1 {
 
 /* drag */
 
+
 .drag-items {
     display: flex;
     justify-content: center;
     text-align: center;
+    margin-bottom: 50px;
 }
 
 .drag-item {
+    background-color: pink;
+    flex-direction: column;
+    padding: 1em;
+    border: 1px dashed #000;
+    margin: 1em;
+}
+
+.drop-areas {
     display: flex;
-    background-color: red;
+    justify-content: center;
+    min-height: 100px;
+}
+
+.drop-point {
+    padding: 1em;
+    border: 1px dashed #000;
+    width: 29%;
+}
+
+/* .drag-items, .drop-areas {
+    display: flex;
+    justify-content: space-around; 
+    text-align: center;
+    width: 100%; 
+}
+
+.drag-item, .drop-point {
+    display: flex;
+    background-color: red; 
     justify-content: center;
     flex-direction: column;
     text-align: center;
     align-items: center;
     padding: 1em;
     border: 1px dashed #000;
-}
-
-.drop-areas {
-    display: flex;
-    justify-content: center;
-    text-align: center;
+    width: 21%;
+    margin: 0 2%; 
 }
 
 .drop-point {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 1em;
-    border: 1px dashed #000;
+    background-color: transparent; 
 }
 
-
+.drop-areas, .drag-items {
+    flex-wrap: wrap; 
+} */
 
 
   img {

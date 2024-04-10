@@ -37,19 +37,19 @@
                 "options": [
                     {
                         "text": "Busan",
-                        "imageUrl": "images/belgium.png"
+                        "imageUrl": null
                     },
                     {
                         "text": "Seoul",
-                        "imageUrl": "images/belgium.png"
+                        "imageUrl": null
                     },
                     {
                         "text": "Incheon",
-                        "imageUrl": "images/belgium.png"
+                        "imageUrl": null
                     },
                     {
                         "text": "Gwangju",
-                        "imageUrl": "images/belgium.png"
+                        "imageUrl": null
                     }
                 ],
                 "answer": ["Seoul", "Busan", "Gwanju", "Incheon"]

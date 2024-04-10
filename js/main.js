@@ -44,10 +44,10 @@ const renderMultipleChoiceOptions = (options) => {
 
 const renderDragDropInOrderOptions = (options) => {
     let dragItemsHtml = options.map(option => `
-        <div class="drag-item" draggable="true" ondragstart="drag(event)" id="${option.text.replace(/\s+/g, '-').toLowerCase()}">
-            ${option.text}
-            <img src="${option.imageUrl}" alt="${option.text}">
-        </div>
+    <div class="drag-item" draggable="true" ondragstart="drag(event)" id="${option.text.replace(/\s+/g, '-').toLowerCase()}">
+        ${option.text}
+        ${option.imageUrl ? `<img src="${option.imageUrl}" alt="${option.text}">` : ''}
+    </div>
     `).join('');
 
     let dropPointsHtml = options.map(() => `
