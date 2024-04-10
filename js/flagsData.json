@@ -1,0 +1,26 @@
+[
+    {
+      "name": "belgium",
+      "imagePath": "images/belgium.png"
+    },
+    {
+      "name": "bhutan",
+      "imagePath": "images/bhutan.png"
+    },
+    {
+      "name": "brazil",
+      "imagePath": "images/brazil.png"
+    },
+    {
+        "name": "china",
+        "imagePath": "images/brazil.png"
+    },
+    {
+        "name": "cuba",
+        "imagePath": "images/brazil.png"
+    },
+    {
+        "name": "equador",
+        "imagePath": "images/brazil.png"
+    }
+  ]

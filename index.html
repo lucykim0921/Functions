@@ -1,42 +1,27 @@
-<html>
-    <head>
-        <title>How Much Do You Know About Us?</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="reset.css" rel="stylesheet">
-        <link href="style.css" rel="stylesheet">
-        <script defer src="main.js"></script>
-    </head>
-
-
-    <body>
-        <div id="container">
-            <h1 id="title">
-                How well do you know about South Korea?
-            </h1>
-
-            <div id="setup">
-                <div>
-                    <label for="category">Choose a Category:</label>
-                    <select id="category">
-                        <option value="">Random</option>
-                        <option value="">Demography/Geography</option>
-                        <option value="">History</option>
-                        <option value="">Etiquette</option>
-                        <option value="">Fun Facts</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label for="amount">Number of Questions:</label>
-                    <input type="number" id="amount" min="1" max="7" value="5">
-                </div>
-
-                <button class="start-button"><a href="questions.html">Start quiz</a></button>
-            </div>
-        </div>
-
-    </body>
-
-
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flags Game</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="dragdrop.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h3>Drag & Drop The Flags Over Their Respective Country Names</h3>
+      <div class="draggable-objects"></div>
+      <div class="drop-points"></div>
+    </div>
+    <div class="controls-container">
+      <p id="result"></p>
+      <button id="start">Start Game</button>
+    </div>
+    <!-- Script -->
+    <script src="js/dragdrop.js"></script>
+  </body>
 </html>
