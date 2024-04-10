@@ -123,6 +123,7 @@ h1 {
     padding: 1em;
     border: 1px dashed #000;
     margin: 1em;
+    cursor: grab;
 }
 
 .drop-areas {
