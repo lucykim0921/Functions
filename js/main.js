@@ -19,11 +19,12 @@ const renderItems = (categories) => {
 
             let listItem = `
                 <li>
-                    <div class="quiz">
+                    <div class="quiz" data-question-type="${question.type}" data-correct-answer="${Array.isArray(question.answer) ? question.answer.join(',') : question.answer}">
                         <div class="question">${question.question}</div>
                         ${question.questionImage ? `<img src="${question.questionImage}" alt="Question Image">` : ''}
-                        <div class="answers">${answersHtml}</div>
-                        <button class="next-button">Next</button>
+                        <div class="answers" data-question-type="${question.type}">${answersHtml}</div>
+                        <button class="enter-button">Enter</button>
+                        <div class="feedback"></div>
                         <button class="cross-button"><a href="index.html">&#9747</a></button>
                     </div>
                 </li>
@@ -61,6 +62,67 @@ const renderDragDropInOrderOptions = (options) => {
         </div>
     `;
 };
+
+
+
+
+
+document.addEventListener('click', function(e) {
+    if (e.target && e.target.classList.contains('enter-button')) {
+        const quizItem = e.target.closest('.quiz');
+        const questionType = quizItem.querySelector('.answers').getAttribute('data-question-type');
+        const feedbackElement = quizItem.querySelector('.feedback');
+
+        switch (questionType) {
+            case 'multiple choice':
+                const selectedOption = quizItem.querySelector('.option.selected');
+                if (selectedOption) {
+                    isCorrect = selectedOption.textContent.trim() === quizItem.getAttribute('data-correct-answer').trim();
+                }
+                break;
+            case 'drag-drop-in-order':
+                const draggableItems = [...quizItem.querySelectorAll('.drag-item')];
+                const correctOrder = quizItem.getAttribute('data-correct-order').split(',');
+                const userOrder = draggableItems.map(item => item.textContent.trim());
+                isCorrect = JSON.stringify(userOrder) === JSON.stringify(correctOrder);
+                break;
+            // Add more cases as needed
+        }
+
+        if (typeof isCorrect !== 'undefined') { // Ensure isCorrect is assigned
+            feedbackElement.textContent = isCorrect ? 'Correct!' : 'Wrong answer';
+            feedbackElement.style.color = isCorrect ? 'green' : 'red';
+        }
+    }
+
+    // Logic for selecting an option and marking it as selected
+    if (e.target && e.target.classList.contains('option')) {
+        const options = e.target.closest('.answers').querySelectorAll('.option');
+        options.forEach(option => option.classList.remove('selected'));
+        e.target.classList.add('selected');
+    }
+});
+
+document.addEventListener('click', function(e) {
+    // Check if an option was clicked
+    if (e.target && e.target.classList.contains('option')) {
+        const optionsContainer = e.target.closest('.answers');
+        const options = optionsContainer.querySelectorAll('.options');
+        
+        // Remove the 'option-selected' class from all options
+        options.forEach(option => {
+            option.classList.remove('option-selected');
+        });
+
+        // Add the 'option-selected' class to the clicked option
+        e.target.classList.add('option-selected');
+    }
+});
+
+
+
+
+
 
 // Basic drag and drop functions (placeholders)
 function drag(event) {

@@ -89,7 +89,11 @@ h1 {
     position: relative;
 }
 
-.next-button {
+.option-selected {
+    border: 3px solid #007bff; 
+}
+
+.enter-button {
     margin-top: 50px;
     color: gray;
     border: solid 1px gray;
