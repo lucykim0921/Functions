@@ -33,7 +33,7 @@
 
             {
                 "type": "drag-drop-in-order",
-                "question": "Place the following cities in order of population, from largest to smallest.",
+                "question": "Drag and drop the following cities in order of population, from largest to smallest.",
                 "options": [
                     {
                         "text": "Busan",
@@ -62,19 +62,19 @@
                 "questionImage": null,
                 "options": [
                     {
-                        "text": "43 million",
+                        "text": "less than 1",
                         "imageUrl": null
                     },
                     {
-                        "text": "48 million",
+                        "text": "1",
                         "imageUrl": null
                     },
                     {
-                        "text": "52 million",
+                        "text": "1.5",
                         "imageUrl": null
                     },
                     {
-                        "text": "57 million",
+                        "text": "2",
                         "imageUrl": null
                     }
                 ],
@@ -87,19 +87,19 @@
                 "questionImage": null,
                 "options": [
                     {
-                        "text": "43 million",
+                        "text": "7%",
                         "imageUrl": null
                     },
                     {
-                        "text": "48 million",
+                        "text": "18%",
                         "imageUrl": null
                     },
                     {
-                        "text": "52 million",
+                        "text": "25%",
                         "imageUrl": null
                     },
                     {
-                        "text": "57 million",
+                        "text": "32%",
                         "imageUrl": null
                     }
                 ],
@@ -323,7 +323,7 @@
                         "imageUrl": "images/lisa.jpg"
                     }
                 ],
-                "answer": "Lisa"
+                "answer": "Lisa - Blackpink"
             },
 
             {

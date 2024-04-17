@@ -4,14 +4,15 @@
  }
  
  body {
-     background: #A3B7FF;
+     background: #c8d0e3;
      display: flex;
+     margin: auto;
      align-items: center;
      justify-content: center;
      text-align: center;
  }
 
- .option img {
+.option img {
     max-width: 130px;
  }
  
@@ -20,7 +21,7 @@
      border-radius: 5px;
      font-size: 15px;
      padding: 10px 20px;
-     border: 1px solid #000;
+     border: 1px dotted #000;
  }
  
  button:hover {
@@ -66,27 +67,41 @@
 }
 
 /* q1 template  */
-h1 {
+/* h1 {
     font-weight: 500;
     color: #424180;
+    font-size: 30px;
+    text-align: center;
+    padding: 10px;
+} */
+
+.question {
+    font-weight: 500;
+    line-height: 1.5;
+    color: #000000;
     font-size: 20px;
     text-align: center;
     padding: 10px;
-}
-
-.question {
-    margin-top: 20px;
-    margin-bottom: 100px;
+    max-width: 80%;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 .quiz {
     background: #ffffff;
-    width: 90%;
+    /* width: 90%; */
     max-width: 700px;
-    border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    /* border-radius: 20px; */
+    /* box-shadow: 0 4px 20px rgba(0,0,0,0.3); */
     padding: 20px;
     position: relative;
+    margin-bottom: 20px;
+}
+
+.option {
+    display:inline-block;
+    justify-content: space-evenly;
 }
 
 .option-selected {
@@ -95,8 +110,10 @@ h1 {
 
 .enter-button {
     margin-top: 50px;
-    color: gray;
-    border: solid 1px gray;
+    margin-bottom: 30px;
+    color: white;
+    background-color: gray;
+    border: transparent;
 }
 
 .cross-button {
