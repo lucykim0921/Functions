@@ -1,5 +1,5 @@
-let currentQuestionIndex = 0; // Global index to track the current question
-let questions = []; // Array to hold shuffled questions
+let currentQuestionIndex = 0; 
+let questions = []; 
 
 // Function to shuffle array (Fisher-Yates shuffle algorithm)
 function shuffle(array) {
@@ -18,14 +18,13 @@ function startQuiz() {
     fetch('js/data.json')
     .then(response => response.json())
     .then(data => {
-        let allQuestions = data.categories.flatMap(cat => cat.questions); // Flatten questions from all categories
+        let allQuestions = data.categories.flatMap(cat => cat.questions); 
         let filteredQuestions = [];
 
         if (category === "Random") {
-            // Shuffle all questions first then slice to get random questions across all categories
             filteredQuestions = shuffle(allQuestions).slice(0, amount);
         } else {
-            // Filter by the selected category and then shuffle and slice
+            // other categories
             const categoryData = data.categories.find(cat => cat.name === category);
             if (categoryData) {
                 filteredQuestions = shuffle(categoryData.questions).slice(0, amount);
@@ -56,7 +55,7 @@ function displayQuestionsOnLoad() {
 // Render a single question
 function renderQuestion(question) {
     const dataList = document.getElementById('data-list');
-    dataList.innerHTML = ''; // Clear previous content
+    dataList.innerHTML = ''; 
 
     let answersHtml = '';
     if (question.type === 'multiple choice') {
@@ -76,7 +75,7 @@ function renderQuestion(question) {
         </div>
     `;
 
-    dataList.innerHTML = questionHtml; // Render the current question
+    dataList.innerHTML = questionHtml; 
 }
 
 // Render multiple choice options
@@ -110,7 +109,7 @@ const renderDragDropInOrderOptions = (options) => {
     `;
 };
 
-// Event listeners for interaction
+// Event listeners for start button
 document.addEventListener('DOMContentLoaded', function() {
     const startButton = document.querySelector('.start-button');
     const dataListElement = document.getElementById('data-list');

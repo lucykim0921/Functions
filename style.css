@@ -7,10 +7,12 @@
  body {
      background: #c8d0e3;
      display: flex;
-     margin: auto;
+     /* margin: auto; */
      align-items: center;
      justify-content: center;
      text-align: center;
+     height: 100vh;
+     margin: 0;
  }
  
  button {
@@ -37,8 +39,8 @@
     width: 80%;
     max-width: 600px;
     background-color: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    /* border-radius: 20px; */
+    /* box-shadow: 0 4px 20px rgba(0,0,0,0.3); */
     margin: 20px;
     padding: 20px;
 }
