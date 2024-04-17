@@ -1,39 +1,42 @@
-// Function to render your items
-const renderItems = (categories) => {
+let currentQuestionIndex = 0; // Global index to track the current question
+let questions = []; // Array to hold shuffled questions
+
+// Function to shuffle array (Fisher-Yates shuffle algorithm)
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+// Function to render a single question
+function renderQuestion(question) {
     const dataList = document.getElementById('data-list');
+    dataList.innerHTML = ''; // Clear previous content
 
-    categories.forEach((category) => {
-        dataList.insertAdjacentHTML('beforeend', `<h2>${category.name}</h2>`);
+    let answersHtml = '';
+    if (question.type === 'multiple choice') {
+        answersHtml = renderMultipleChoiceOptions(question.options);
+    } else if (question.type === 'drag-drop-in-order') {
+        answersHtml = renderDragDropInOrderOptions(question.options);
+    }
 
-        category.questions.forEach((question) => {
-            let answersHtml = '';
-            switch (question.type) {
-                case 'multiple choice':
-                    answersHtml = renderMultipleChoiceOptions(question.options);
-                    break;
-                case 'drag-drop-in-order':
-                    answersHtml = renderDragDropInOrderOptions(question.options);
-                    break;
-                // Implement other cases as needed
-            }
+    let questionHtml = `
+        <div class="quiz" data-question-type="${question.type}" data-correct-answer="${Array.isArray(question.answer) ? question.answer.join(',') : question.answer}">
+            <div class="question">${question.question}</div>
+            ${question.questionImage ? `<img src="${question.questionImage}" alt="Question Image">` : ''}
+            <div class="answers" data-question-type="${question.type}">${answersHtml}</div>
+            <div class="feedback"></div>
+            <button class="enter-button">Enter</button>
+            <button class="cross-button"><a href="index.html">&#9747;</a></button>
+        </div>
+    `;
 
-            let listItem = `
-                <li>
-                    <div class="quiz" data-question-type="${question.type}" data-correct-answer="${Array.isArray(question.answer) ? question.answer.join(',') : question.answer}">
-                        <div class="question">${question.question}</div>
-                        ${question.questionImage ? `<img src="${question.questionImage}" alt="Question Image">` : ''}
-                        <div class="answers" data-question-type="${question.type}">${answersHtml}</div>
-                        <div class="feedback"></div>
-                        <button class="enter-button">Enter</button>
-                        <button class="cross-button"><a href="index.html">&#9747</a></button>
-                    </div>
-                </li>
-            `;
-            dataList.insertAdjacentHTML('beforeend', listItem);
-        });
-    });
-};
+    dataList.innerHTML = questionHtml; // Render the current question
+}
 
+// Render multiple choice options
 const renderMultipleChoiceOptions = (options) => {
     return options.map(option => `
         <button class="option">
@@ -43,6 +46,7 @@ const renderMultipleChoiceOptions = (options) => {
     `).join('');
 };
 
+// Render drag and drop options
 const renderDragDropInOrderOptions = (options) => {
     let dragItemsHtml = options.map(option => `
     <div class="drag-item" draggable="true" ondragstart="drag(event)" id="${option.text.replace(/\s+/g, '-').toLowerCase()}">
@@ -63,61 +67,54 @@ const renderDragDropInOrderOptions = (options) => {
     `;
 };
 
-
-
+// Event listeners and interactions
 document.addEventListener('click', function(e) {
     if (e.target && e.target.classList.contains('enter-button')) {
         const quizItem = e.target.closest('.quiz');
-        const questionType = quizItem.querySelector('.answers').getAttribute('data-question-type');
-        const feedbackElement = quizItem.querySelector('.feedback');
-        let isCorrect; // Properly declare isCorrect here
+        const isCorrect = checkAnswer(quizItem);
 
-        switch (questionType) {
-            case 'multiple choice':
-                const selectedOption = quizItem.querySelector('.option.option-selected'); // Make sure this matches how you mark an option as selected
-                if (selectedOption) {
-                    isCorrect = selectedOption.textContent.trim() === quizItem.getAttribute('data-correct-answer').trim();
-                }
-                break;
-            case 'drag-drop-in-order':
-                const draggableItems = [...quizItem.querySelectorAll('.drag-item')];
-                const userOrder = draggableItems.map(item => item.id);
-                const correctOrder = quizItem.getAttribute('data-correct-order').split(',');
-                isCorrect = JSON.stringify(userOrder) === JSON.stringify(correctOrder);
-                break;
-        }
-
-        feedbackElement.classList.remove('feedback-correct', 'feedback-incorrect');
-
-        // Apply new feedback class and set text
         if (isCorrect) {
-            feedbackElement.classList.add('feedback-correct');
-            feedbackElement.textContent = 'Correct!';
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                renderQuestion(questions[currentQuestionIndex]); // Move to the next question
+            } else {
+                alert('Quiz completed!'); // Notify completion of the quiz
+            }
         } else {
-            feedbackElement.classList.add('feedback-incorrect');
-            feedbackElement.textContent = 'Wrong answer';
+            const feedbackElement = quizItem.querySelector('.feedback');
+            feedbackElement.textContent = 'Try again!'; // Provide opportunity to retry
+            feedbackElement.className = 'feedback-incorrect';
         }
-
-        // feedbackElement.textContent = isCorrect ? 'Correct!' : 'Wrong answer';
-        // feedbackElement.style.color = isCorrect ? 'green' : 'red';
     }
 
     if (e.target && e.target.classList.contains('option')) {
-        // Ensure consistency in class names used for selected options
         const optionsContainer = e.target.closest('.answers');
         const options = optionsContainer.querySelectorAll('.option');
-
-        options.forEach(option => option.classList.remove('option-selected')); // Ensure this matches your CSS
-        e.target.classList.add('option-selected');
+        options.forEach(option => option.classList.remove('option-selected')); // Clear previous selections
+        e.target.classList.add('option-selected'); // Highlight newly selected option
     }
 });
 
+// Check the correctness of the answer
+function checkAnswer(quizItem) {
+    const correctAnswer = quizItem.getAttribute('data-correct-answer').split(',');
+    let userAnswer = getUserAnswer(quizItem);
 
+    return JSON.stringify(userAnswer) === JSON.stringify(correctAnswer);
+}
 
+// Extract the user's answer based on the type of question
+function getUserAnswer(quizItem) {
+    if (quizItem.getAttribute('data-question-type') === 'multiple choice') {
+        const selectedOption = quizItem.querySelector('.option-selected');
+        return selectedOption ? [selectedOption.textContent.trim()] : [];
+    } else {
+        const draggableItems = Array.from(quizItem.querySelectorAll('.drag-item'));
+        return draggableItems.map(item => item.id);
+    }
+}
 
-
-
-// Basic drag and drop functions (placeholders)
+// Basic drag and drop functions
 function drag(event) {
     event.dataTransfer.setData("text", event.target.id);
 }
@@ -130,16 +127,15 @@ function drop(event) {
     event.preventDefault();
     var data = event.dataTransfer.getData("text");
     var draggedElement = document.getElementById(data);
-    if (event.target.className === "drop-point") {
-        event.target.appendChild(draggedElement);
-    }
+    event.target.appendChild(draggedElement);
 }
 
+// Load questions and shuffle them initially
 fetch('js/data.json')
     .then(response => response.json())
     .then(data => {
-        const categories = data.categories;
-        renderItems(categories);
+        questions = shuffle(data.categories.flatMap(category => category.questions)); // Flatten and shuffle questions from all categories
+        renderQuestion(questions[currentQuestionIndex]); // Render the first question
     })
     .catch(error => {
         console.error('Error fetching JSON data:', error);
