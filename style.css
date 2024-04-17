@@ -18,8 +18,7 @@
  button {
      cursor: pointer;
      border-radius: 5px;
-     font-size: 15px;
-     padding: 10px 20px;
+     padding: 5px 5px 10px;
      border: 1px dotted #000;
  }
  
@@ -69,13 +68,13 @@
     font-weight: 500;
     line-height: 1.5;
     color: #000000;
-    font-size: 20px;
+    font-size: 16px;
     text-align: center;
     padding: 10px;
     max-width: 80%;
     margin: auto;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: 20px;
+    /* margin-bottom: 20px; */
 }
 
 .quiz {
@@ -85,11 +84,9 @@
     justify-content: center;
     width: 90%;
     max-width: 700px;
-    padding: 20px;
+    padding: 10px;
     position: relative;
     margin-bottom: 20px;
-    top: 50;
-    bottom: 50;
 }
 
 .option {
@@ -102,17 +99,16 @@
 }
 
 .option img {
-    width: 80%;
-    max-width: 200px;
+    margin-top: 5px;
+    max-width: 150px;
     height: auto;
-    width: 8em;
 }
 
 .answers {
     display: flex;
     grid-template-columns: repeat(2, 1fr); 
     grid-gap: 10px; 
-    padding: 20px; 
+    padding: 10px; 
     width: 100%;
     justify-content: center;
     flex-wrap: wrap;
@@ -122,19 +118,28 @@
     border: 3px solid #007bff; 
 }
 
+.start-button {
+    padding: 10px 30px 10px;
+}
+
 .enter-button {
-    margin-top: 50px;
-    margin-bottom: 30px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 10px 30px 10px;
     color: white;
     background-color: gray;
     border: transparent;
 }
 
+.enter-button:hover {
+    background-color: rgb(91, 148, 255);
+}
+
 .cross-button {
     font-size: 25px;
     position: absolute;
-    left: 25px;
-    top: 20px;
+    left: 15px;
+    top: 15px;
     border: transparent;
 }
 
