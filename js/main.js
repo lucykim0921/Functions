@@ -18,12 +18,14 @@ function startQuiz() {
     fetch('js/data.json')
     .then(response => response.json())
     .then(data => {
+        let allQuestions = data.categories.flatMap(cat => cat.questions); // Flatten questions from all categories
         let filteredQuestions = [];
+
         if (category === "Random") {
-            // If "Random", you could shuffle all questions first then slice to get random from all categories
-            filteredQuestions = shuffle(data.categories.flatMap(cat => cat.questions)).slice(0, amount);
+            // Shuffle all questions first then slice to get random questions across all categories
+            filteredQuestions = shuffle(allQuestions).slice(0, amount);
         } else {
-            // Otherwise, filter by the selected category and then shuffle and slice
+            // Filter by the selected category and then shuffle and slice
             const categoryData = data.categories.find(cat => cat.name === category);
             if (categoryData) {
                 filteredQuestions = shuffle(categoryData.questions).slice(0, amount);
@@ -31,9 +33,6 @@ function startQuiz() {
                 console.error('Selected category not found in data:', category);
             }
         }
-
-        console.log("Category selected:", category);
-        console.log("Filtered questions:", filteredQuestions);
 
         localStorage.setItem('questions', JSON.stringify(filteredQuestions));
         window.location.href = 'questions.html';
@@ -45,9 +44,9 @@ function startQuiz() {
 function displayQuestionsOnLoad() {
     const storedQuestions = localStorage.getItem('questions');
     if (storedQuestions) {
-        const questions = JSON.parse(storedQuestions);
+        questions = JSON.parse(storedQuestions);
         if (questions.length > 0) {
-            renderQuestion(questions[0], 0);
+            renderQuestion(questions[0]);
         }
     } else {
         console.error("No questions found in storage.");
@@ -55,7 +54,7 @@ function displayQuestionsOnLoad() {
 }
 
 // Render a single question
-function renderQuestion(question, questionIndex) {
+function renderQuestion(question) {
     const dataList = document.getElementById('data-list');
     dataList.innerHTML = ''; // Clear previous content
 
@@ -93,10 +92,10 @@ const renderMultipleChoiceOptions = (options) => {
 // Render drag and drop options
 const renderDragDropInOrderOptions = (options) => {
     let dragItemsHtml = options.map(option => `
-    <div class="drag-item" draggable="true" ondragstart="drag(event)" id="${option.text.replace(/\s+/g, '-').toLowerCase()}">
-        ${option.text}
-        ${option.imageUrl ? `<img src="${option.imageUrl}" alt="${option.text}">` : ''}
-    </div>
+        <div class="drag-item" draggable="true" ondragstart="drag(event)" id="${option.text.replace(/\s+/g, '-').toLowerCase()}">
+            ${option.text}
+            ${option.imageUrl ? `<img src="${option.imageUrl}" alt="${option.text}">` : ''}
+        </div>
     `).join('');
 
     let dropPointsHtml = options.map(() => `
@@ -118,7 +117,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (startButton) {
         startButton.addEventListener('click', startQuiz);
-    } else if (dataListElement) {
+    }
+    if (dataListElement) {
         displayQuestionsOnLoad();
     }
 });
@@ -132,13 +132,13 @@ document.addEventListener('click', function(e) {
         if (isCorrect) {
             currentQuestionIndex++;
             if (currentQuestionIndex < questions.length) {
-                renderQuestion(questions[currentQuestionIndex]); // Move to the next question
+                renderQuestion(questions[currentQuestionIndex]);
             } else {
-                alert('Quiz completed!'); // Notify completion of the quiz
+                alert('Quiz completed!');
             }
         } else {
             const feedbackElement = quizItem.querySelector('.feedback');
-            feedbackElement.textContent = 'Try again!'; // Provide opportunity to retry
+            feedbackElement.textContent = 'Try again!';
             feedbackElement.className = 'feedback-incorrect';
         }
     }
@@ -146,8 +146,8 @@ document.addEventListener('click', function(e) {
     if (e.target && e.target.classList.contains('option')) {
         const optionsContainer = e.target.closest('.answers');
         const options = optionsContainer.querySelectorAll('.option');
-        options.forEach(option => option.classList.remove('option-selected')); // Clear previous selections
-        e.target.classList.add('option-selected'); // Highlight newly selected option
+        options.forEach(option => option.classList.remove('option-selected'));
+        e.target.classList.add('option-selected');
     }
 });
 
@@ -170,6 +170,7 @@ function getUserAnswer(quizItem) {
     }
 }
 
+
 // Basic drag and drop functions
 function drag(event) {
     event.dataTransfer.setData("text", event.target.id);
@@ -185,14 +186,3 @@ function drop(event) {
     var draggedElement = document.getElementById(data);
     event.target.appendChild(draggedElement);
 }
-
-// Load questions and shuffle them initially
-fetch('js/data.json')
-    .then(response => response.json())
-    .then(data => {
-        questions = shuffle(data.categories.flatMap(category => category.questions)); // Flatten and shuffle questions from all categories
-        renderQuestion(questions[currentQuestionIndex]); // Render the first question
-    })
-    .catch(error => {
-        console.error('Error fetching JSON data:', error);
-    });
