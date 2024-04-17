@@ -70,7 +70,6 @@ function renderQuestion(question) {
             ${question.questionImage ? `<img src="${question.questionImage}" alt="Question Image">` : ''}
             <div class="answers">${answersHtml}</div>
             <div class="feedback"></div>
-            <button class="enter-button">Enter</button>
             <button class="cross-button"><a href="index.html">&#9747;</a></button>
         </div>
     `;
@@ -124,29 +123,48 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Event listeners and interactions
 document.addEventListener('click', function(e) {
-    if (e.target && e.target.classList.contains('enter-button')) {
-        const quizItem = e.target.closest('.quiz');
-        const isCorrect = checkAnswer(quizItem);
-
-        if (isCorrect) {
-            currentQuestionIndex++;
-            if (currentQuestionIndex < questions.length) {
-                renderQuestion(questions[currentQuestionIndex]);
-            } else {
-                alert('Quiz completed!');
-            }
-        } else {
-            const feedbackElement = quizItem.querySelector('.feedback');
-            feedbackElement.textContent = 'Try again!';
-            feedbackElement.className = 'feedback-incorrect';
-        }
-    }
-
     if (e.target && e.target.classList.contains('option')) {
+        const quizItem = e.target.closest('.quiz');
         const optionsContainer = e.target.closest('.answers');
         const options = optionsContainer.querySelectorAll('.option');
-        options.forEach(option => option.classList.remove('option-selected'));
-        e.target.classList.add('option-selected');
+        
+        // Check if the options are already disabled
+        if (!e.target.disabled) {
+            // Disable all options after one is clicked
+            options.forEach(option => {
+                option.disabled = true; // Disable the button
+                option.classList.remove('option-selected');
+            });
+            e.target.classList.add('option-selected'); // Highlight the selected option
+            
+            // Check the answer immediately upon selection
+            const isCorrect = checkAnswer(quizItem);
+            const feedbackElement = quizItem.querySelector('.feedback');
+            if (isCorrect) {
+                feedbackElement.textContent = 'Correct answer!';
+                feedbackElement.className = 'feedback-correct';
+            } else {
+                feedbackElement.textContent = 'Wrong answer!';
+                feedbackElement.className = 'feedback-incorrect';
+            }
+            
+            // Add Next Question button if not already present
+            if (!quizItem.querySelector('.next-button')) {
+                const nextButton = document.createElement('button');
+                nextButton.textContent = 'Next Question';
+                nextButton.className = 'next-button';
+                quizItem.appendChild(nextButton);
+
+                nextButton.addEventListener('click', () => {
+                    currentQuestionIndex++;
+                    if (currentQuestionIndex < questions.length) {
+                        renderQuestion(questions[currentQuestionIndex]);
+                    } else {
+                        alert('Quiz completed!');
+                    }
+                });
+            }
+        }
     }
 });
 
