@@ -1,6 +1,7 @@
 
 * {
     font-family: monospace;
+    margin: auto;
  }
  
  body {
@@ -10,10 +11,6 @@
      align-items: center;
      justify-content: center;
      text-align: center;
- }
-
-.option img {
-    max-width: 130px;
  }
  
  button {
@@ -66,15 +63,6 @@
     border: 1px solid #ddd;
 }
 
-/* q1 template  */
-/* h1 {
-    font-weight: 500;
-    color: #424180;
-    font-size: 30px;
-    text-align: center;
-    padding: 10px;
-} */
-
 .question {
     font-weight: 500;
     line-height: 1.5;
@@ -90,18 +78,35 @@
 
 .quiz {
     background: #ffffff;
-    /* width: 90%; */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
     max-width: 700px;
-    /* border-radius: 20px; */
-    /* box-shadow: 0 4px 20px rgba(0,0,0,0.3); */
     padding: 20px;
     position: relative;
     margin-bottom: 20px;
 }
 
 .option {
-    display:inline-block;
-    justify-content: space-evenly;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+}
+
+.option img {
+    max-width: 80%;
+    height: auto;
+    width: 8em;
+}
+
+.answers {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    grid-gap: 10px; 
+    padding: 20px; 
 }
 
 .option-selected {
@@ -159,38 +164,8 @@
     width: 29%;
 }
 
-/* .drag-items, .drop-areas {
-    display: flex;
-    justify-content: space-around; 
-    text-align: center;
-    width: 100%; 
-}
-
-.drag-item, .drop-point {
-    display: flex;
-    background-color: red; 
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    padding: 1em;
-    border: 1px dashed #000;
-    width: 21%;
-    margin: 0 2%; 
-}
-
-.drop-point {
-    background-color: transparent; 
-}
-
-.drop-areas, .drag-items {
-    flex-wrap: wrap; 
-} */
-
-
   img {
-    width: 8em;
-    /* filter: drop-shadow(0 0.3em 0.9em rgba(0, 0, 0, 0.25)); */
+   width: 90%;
   }
 
 
