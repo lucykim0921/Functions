@@ -89,9 +89,34 @@
     justify-content: center;
     width: 90%;
     max-width: 700px;
-    padding: 10px;
+    padding: 20px 10px 20px;
     position: relative;
     margin-bottom: 20px;
+}
+
+#quiz-progress {
+    width: 80%;
+    background-color: #e0e0e0;
+    position: relative;
+    height: 10px;
+    margin-bottom: 30px;
+    /* border-radius: 5px; */
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #4bbcf0;
+    width: 0%; /* Initial width */
+    margin-bottom: 5px;
+    /* border-radius: 5px; */
+    transition: width 0.4s ease-in-out;
+}
+
+#progress-text {
+    /* text-align: left; */
+    position: absolute;
+    width: 100%;
+    /* top: 25px; Adjust based on your design */
 }
 
 .option {
@@ -144,7 +169,7 @@
     font-size: 25px;
     position: absolute;
     left: 15px;
-    top: 15px;
+    top: 5px;
     border: transparent;
 }
 

@@ -64,8 +64,16 @@ function renderQuestion(question) {
         answersHtml = renderDragDropInOrderOptions(question.options);
     }
 
+     // Calculate the current progress
+     const currentProgress = ((currentQuestionIndex + 1) / questions.length) * 100;
+     const progressText = `Question ${currentQuestionIndex + 1}/${questions.length}`;
+
     let questionHtml = `
         <div class="quiz" data-question-type="${question.type}" data-correct-answer="${Array.isArray(question.answer) ? question.answer.join(',') : question.answer}">
+                <div id="quiz-progress">
+                <div class="progress-bar" style="width: 0%;"></div>
+                <p id="progress-text">Question 0/0</p>
+                </div>
             <div class="question">${question.question}</div>
             ${question.questionImage ? `<img src="${question.questionImage}" alt="Question Image">` : ''}
             <div class="answers">${answersHtml}</div>
@@ -75,6 +83,16 @@ function renderQuestion(question) {
     `;
 
     dataList.innerHTML = questionHtml; 
+    updateProgress(currentQuestionIndex + 1, questions.length);
+}
+
+function updateProgress(current, total) {
+    const progressBar = document.querySelector('.progress-bar');
+    const progressText = document.getElementById('progress-text');
+    const width = (current / total) * 100;
+
+    progressBar.style.width = `${width}%`;
+    progressText.textContent = `Question ${current}/${total}`;
 }
 
 // Render multiple choice options
