@@ -10,8 +10,46 @@ function shuffle(array) {
     return array;
 }
 
-// Function to render a single question
-function renderQuestion(question) {
+// Initialize quiz with selections from index.html
+function startQuiz() {
+    const category = document.getElementById('category').value;
+    const amount = parseInt(document.getElementById('amount').value, 10);
+
+    fetch('js/data.json')
+        .then(response => response.json())
+        .then(data => {
+            let filteredQuestions;
+            if (category === "Random") {
+                // If "Random", you could shuffle all questions first then slice to get random from all categories
+                filteredQuestions = shuffle(data.categories.flatMap(cat => cat.questions)).slice(0, amount);
+            } else {
+                // Otherwise, filter by the selected category and then shuffle and slice
+                filteredQuestions = shuffle(data.categories
+                    .find(cat => cat.name === category).questions
+                ).slice(0, amount);
+            }
+
+            localStorage.setItem('questions', JSON.stringify(filteredQuestions));
+            window.location.href = 'questions.html';
+        })
+        .catch(error => console.error('Error fetching JSON data:', error));
+}
+
+// Load and display questions on questions.html
+function displayQuestionsOnLoad() {
+    const storedQuestions = localStorage.getItem('questions');
+    if (storedQuestions) {
+        const questions = JSON.parse(storedQuestions);
+        if (questions.length > 0) {
+            renderQuestion(questions[0], 0);
+        }
+    } else {
+        console.error("No questions found in storage.");
+    }
+}
+
+// Render a single question
+function renderQuestion(question, questionIndex) {
     const dataList = document.getElementById('data-list');
     dataList.innerHTML = ''; // Clear previous content
 
@@ -26,7 +64,7 @@ function renderQuestion(question) {
         <div class="quiz" data-question-type="${question.type}" data-correct-answer="${Array.isArray(question.answer) ? question.answer.join(',') : question.answer}">
             <div class="question">${question.question}</div>
             ${question.questionImage ? `<img src="${question.questionImage}" alt="Question Image">` : ''}
-            <div class="answers" data-question-type="${question.type}">${answersHtml}</div>
+            <div class="answers">${answersHtml}</div>
             <div class="feedback"></div>
             <button class="enter-button">Enter</button>
             <button class="cross-button"><a href="index.html">&#9747;</a></button>
@@ -66,6 +104,18 @@ const renderDragDropInOrderOptions = (options) => {
         </div>
     `;
 };
+
+// Event listeners for interaction
+document.addEventListener('DOMContentLoaded', function() {
+    const startButton = document.querySelector('.start-button');
+    const dataListElement = document.getElementById('data-list');
+
+    if (startButton) {
+        startButton.addEventListener('click', startQuiz);
+    } else if (dataListElement) {
+        displayQuestionsOnLoad();
+    }
+});
 
 // Event listeners and interactions
 document.addEventListener('click', function(e) {
