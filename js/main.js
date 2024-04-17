@@ -16,23 +16,29 @@ function startQuiz() {
     const amount = parseInt(document.getElementById('amount').value, 10);
 
     fetch('js/data.json')
-        .then(response => response.json())
-        .then(data => {
-            let filteredQuestions;
-            if (category === "Random") {
-                // If "Random", you could shuffle all questions first then slice to get random from all categories
-                filteredQuestions = shuffle(data.categories.flatMap(cat => cat.questions)).slice(0, amount);
+    .then(response => response.json())
+    .then(data => {
+        let filteredQuestions = [];
+        if (category === "Random") {
+            // If "Random", you could shuffle all questions first then slice to get random from all categories
+            filteredQuestions = shuffle(data.categories.flatMap(cat => cat.questions)).slice(0, amount);
+        } else {
+            // Otherwise, filter by the selected category and then shuffle and slice
+            const categoryData = data.categories.find(cat => cat.name === category);
+            if (categoryData) {
+                filteredQuestions = shuffle(categoryData.questions).slice(0, amount);
             } else {
-                // Otherwise, filter by the selected category and then shuffle and slice
-                filteredQuestions = shuffle(data.categories
-                    .find(cat => cat.name === category).questions
-                ).slice(0, amount);
+                console.error('Selected category not found in data:', category);
             }
+        }
 
-            localStorage.setItem('questions', JSON.stringify(filteredQuestions));
-            window.location.href = 'questions.html';
-        })
-        .catch(error => console.error('Error fetching JSON data:', error));
+        console.log("Category selected:", category);
+        console.log("Filtered questions:", filteredQuestions);
+
+        localStorage.setItem('questions', JSON.stringify(filteredQuestions));
+        window.location.href = 'questions.html';
+    })
+    .catch(error => console.error('Error fetching JSON data:', error));
 }
 
 // Load and display questions on questions.html
