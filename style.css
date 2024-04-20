@@ -95,28 +95,29 @@
 }
 
 #quiz-progress {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align children to the start of the flex container */
     width: 80%;
-    background-color: #e0e0e0;
-    position: relative;
-    height: 10px;
-    margin-bottom: 30px;
-    /* border-radius: 5px; */
+    padding: 5px 0;
+    background-color: #e0e0e0; /* Light grey background for the entire progress bar area */
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 .progress-bar {
-    height: 100%;
-    background-color: #4bbcf0;
-    width: 0%; /* Initial width */
-    margin-bottom: 5px;
-    /* border-radius: 5px; */
+    height: 20px;
+    background-color: #4CAF50; /* Green color for the progress part */
+    width: 0%; /* Starts with 0 width and will grow to the right */
+    border-radius: 5px 0 0 5px; /* Rounded corners on the left side only initially */
     transition: width 0.4s ease-in-out;
+    margin: 0 5px;
 }
 
 #progress-text {
-    /* text-align: left; */
-    position: absolute;
-    width: 100%;
-    /* top: 25px; Adjust based on your design */
+    padding-left: 10px; /* Adds space between the progress bar and the text */
+    white-space: nowrap; /* Ensures the text does not wrap to the next line */
+    margin: 0;
 }
 
 .option {

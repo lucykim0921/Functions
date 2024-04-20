@@ -1,7 +1,8 @@
 let currentQuestionIndex = 0; 
 let questions = []; 
 
-// Function to shuffle array (Fisher-Yates shuffle algorithm)
+
+// Function to shuffle quiz
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -10,10 +11,11 @@ function shuffle(array) {
     return array;
 }
 
-// Initialize quiz with selections from index.html
+// Startquiz
 function startQuiz() {
     const category = document.getElementById('category').value;
     const amount = parseInt(document.getElementById('amount').value, 10);
+    const timeLimit = parseInt(document.getElementById('time-limit').value, 10);
 
     fetch('js/data.json')
     .then(response => response.json())
@@ -32,14 +34,16 @@ function startQuiz() {
                 console.error('Selected category not found in data:', category);
             }
         }
+        
 
         localStorage.setItem('questions', JSON.stringify(filteredQuestions));
+        localStorage.setItem('timeLimit', timeLimit); 
         window.location.href = 'questions.html';
     })
     .catch(error => console.error('Error fetching JSON data:', error));
 }
 
-// Load and display questions on questions.html
+// Load quiz from json
 function displayQuestionsOnLoad() {
     const storedQuestions = localStorage.getItem('questions');
     if (storedQuestions) {
@@ -52,10 +56,11 @@ function displayQuestionsOnLoad() {
     }
 }
 
-// Render a single question
+// Render each question
 function renderQuestion(question) {
     const dataList = document.getElementById('data-list');
     dataList.innerHTML = ''; 
+    const timeLimit = parseInt(localStorage.getItem('timeLimit')) * 1;
 
     let answersHtml = '';
     if (question.type === 'multiple choice') {
@@ -64,26 +69,104 @@ function renderQuestion(question) {
         answersHtml = renderDragDropInOrderOptions(question.options);
     }
 
-     // Calculate the current progress
+     // progress bar
      const currentProgress = ((currentQuestionIndex + 1) / questions.length) * 100;
      const progressText = `Question ${currentQuestionIndex + 1}/${questions.length}`;
 
     let questionHtml = `
         <div class="quiz" data-question-type="${question.type}" data-correct-answer="${Array.isArray(question.answer) ? question.answer.join(',') : question.answer}">
                 <div id="quiz-progress">
-                <div class="progress-bar" style="width: 0%;"></div>
-                <p id="progress-text">Question 0/0</p>
+                    <div class="progress-bar" style="width: 0%;"></div>
                 </div>
+                <p id="progress-text">Question 0/0</p>
             <div class="question">${question.question}</div>
             ${question.questionImage ? `<img src="${question.questionImage}" alt="Question Image">` : ''}
             <div class="answers">${answersHtml}</div>
             <div class="feedback"></div>
+            <div class="timer">Time left: <span id="timer-span">${timeLimit}</span> seconds</div>
             <button class="cross-button"><a href="index.html">&#9747;</a></button>
         </div>
     `;
 
     dataList.innerHTML = questionHtml; 
     updateProgress(currentQuestionIndex + 1, questions.length);
+
+    startTimer(timeLimit);
+
+    document.querySelectorAll('.option').forEach(option => {
+        option.addEventListener('click', function() {
+            clearInterval(timerId);  
+            checkAndHandleAnswer(this, question);
+        });
+    });
+}
+
+// starttimer
+function startTimer(seconds) {
+    let timeLeft = seconds;
+    const timerElement = document.getElementById('timer-span');
+    const intervalId = setInterval(() => {
+        timeLeft -= 1;
+        timerElement.textContent = timeLeft;  
+
+        if (timeLeft <= 0) {
+            clearInterval(intervalId);
+            handleNoResponse();  
+        }
+    }, 1000);
+}
+
+function handleNoResponse() {
+    const options = document.querySelectorAll('.option');
+    options.forEach(option => {
+        option.disabled = true; // Disable all options after the time runs out
+    });
+
+    const feedbackElement = document.querySelector('.feedback');
+    feedbackElement.textContent = 'Time out! No answer selected.';
+    feedbackElement.className = 'feedback-incorrect';
+
+    addNextQuestionButton();
+}
+
+function addNextQuestionButton() {
+    const quizContainer = document.querySelector('.quiz');
+    if (!quizContainer.querySelector('.next-button')) {
+        const nextButton = document.createElement('button');
+        nextButton.textContent = 'Next Question';
+        nextButton.className = 'next-button';
+        quizContainer.appendChild(nextButton);
+
+        nextButton.addEventListener('click', () => {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                renderQuestion(questions[currentQuestionIndex]);
+            } else {
+                alert('Quiz completed!');
+                window.location.href = 'index.html'; // Optionally redirect to the start or a results page
+            }
+        });
+    }
+}
+
+function checkAndHandleAnswer(option, question) {
+    const options = document.querySelectorAll('.option');
+    options.forEach(opt => opt.disabled = true);  
+
+    const isCorrect = option.textContent.trim() === question.answer;
+    const feedbackElement = document.querySelector('.feedback');
+    if (isCorrect) {
+        feedbackElement.textContent = 'Correct answer!';
+        feedbackElement.className = 'feedback-correct';
+    } else {
+        feedbackElement.textContent = 'Wrong answer!';
+        feedbackElement.className = 'feedback-incorrect';
+    }
+
+    if (!document.querySelector('.next-button')) {
+        addNextQuestionButton();
+    }
+
 }
 
 function updateProgress(current, total) {
@@ -146,16 +229,16 @@ document.addEventListener('click', function(e) {
         const optionsContainer = e.target.closest('.answers');
         const options = optionsContainer.querySelectorAll('.option');
         
-        // Check if the options are already disabled
+
         if (!e.target.disabled) {
             // Disable all options after one is clicked
             options.forEach(option => {
                 option.disabled = true; // Disable the button
                 option.classList.remove('option-selected');
             });
-            e.target.classList.add('option-selected'); // Highlight the selected option
+            e.target.classList.add('option-selected'); 
             
-            // Check the answer immediately upon selection
+
             const isCorrect = checkAnswer(quizItem);
             const feedbackElement = quizItem.querySelector('.feedback');
             if (isCorrect) {
@@ -186,7 +269,7 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// Check the correctness of the answer
+// Check the correctness 
 function checkAnswer(quizItem) {
     const correctAnswer = quizItem.getAttribute('data-correct-answer').split(',');
     let userAnswer = getUserAnswer(quizItem);
