@@ -1,5 +1,6 @@
 let currentQuestionIndex = 0; 
 let questions = []; 
+let timerId;
 
 
 // Function to shuffle quiz
@@ -103,17 +104,22 @@ function renderQuestion(question) {
 
 // starttimer
 function startTimer(seconds) {
-    let timeLeft = seconds;
     const timerElement = document.getElementById('timer-span');
-    const intervalId = setInterval(() => {
+    timerElement.textContent = seconds; // Display the starting seconds
+    let timeLeft = seconds;
+
+    // Clear any existing timer before starting a new one
+    clearInterval(timerId);
+
+    timerId = setInterval(() => {
         timeLeft -= 1;
-        timerElement.textContent = timeLeft;  
+        timerElement.textContent = timeLeft;  // Update the visible countdown
 
         if (timeLeft <= 0) {
-            clearInterval(intervalId);
-            handleNoResponse();  
+            clearInterval(timerId);
+            handleNoResponse();  // Handle the scenario when time runs out
         }
-    }, 1000);
+    }, 1000); // Ensure the countdown decreases every second
 }
 
 function handleNoResponse() {
