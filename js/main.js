@@ -164,17 +164,16 @@ function checkAndHandleAnswer(option, question) {
     if (isCorrect) {
         feedbackElement.textContent = 'Correct answer!';
         feedbackElement.className = 'feedback-correct';
+        addNextQuestionButton();
     } else {
         feedbackElement.textContent = 'Wrong answer!';
         feedbackElement.className = 'feedback-incorrect';
-    }
-
-    if (!document.querySelector('.next-button')) {
         addNextQuestionButton();
     }
 
 }
 
+// progress bar
 function updateProgress(current, total) {
     const progressBar = document.querySelector('.progress-bar');
     const progressText = document.getElementById('progress-text');
