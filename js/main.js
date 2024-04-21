@@ -1,6 +1,7 @@
 let currentQuestionIndex = 0; 
 let questions = []; 
 let timerId;
+let correctAnswersCount = 0;
 
 
 // Function to shuffle quiz
@@ -136,22 +137,22 @@ function handleNoResponse() {
 }
 
 function addNextQuestionButton() {
-    const quizContainer = document.querySelector('.quiz');
-    if (!quizContainer.querySelector('.next-button')) {
-        const nextButton = document.createElement('button');
-        nextButton.textContent = 'Next Question';
-        nextButton.className = 'next-button';
-        quizContainer.appendChild(nextButton);
+    if (currentQuestionIndex < questions.length - 1) {
+        const quizContainer = document.querySelector('.quiz');
+        if (!quizContainer.querySelector('.next-button')) {
+            const nextButton = document.createElement('button');
+            nextButton.textContent = 'Next Question';
+            nextButton.className = 'next-button';
+            quizContainer.appendChild(nextButton);
 
-        nextButton.addEventListener('click', () => {
-            currentQuestionIndex++;
-            if (currentQuestionIndex < questions.length) {
+            nextButton.addEventListener('click', () => {
+                currentQuestionIndex++;
                 renderQuestion(questions[currentQuestionIndex]);
-            } else {
-                alert('Quiz completed!');
-                window.location.href = 'index.html'; // Optionally redirect to the start or a results page
-            }
-        });
+            });
+        }
+    } else {
+        console.log("showing result")
+        showResults();
     }
 }
 
@@ -164,6 +165,7 @@ function checkAndHandleAnswer(option, question) {
     if (isCorrect) {
         feedbackElement.textContent = 'Correct answer!';
         feedbackElement.className = 'feedback-correct';
+        correctAnswersCount++; 
         addNextQuestionButton();
     } else {
         feedbackElement.textContent = 'Wrong answer!';
@@ -182,6 +184,22 @@ function updateProgress(current, total) {
     progressBar.style.width = `${width}%`;
     progressText.textContent = `Question ${current}/${total}`;
 }
+
+// result tab
+function showResults() {
+    const dataList = document.getElementById('data-list');
+    dataList.innerHTML = `
+        <div class="results">
+            <h1>Quiz Completed!</h1>
+            <p>You answered correctly ${correctAnswersCount} out of ${questions.length} questions.</p>
+            <div class="buttons">
+                <button onclick="shareResults()">Share Your Result</button>
+                <button onclick="window.location.href='index.html'">Return Home</button>
+            </div>
+        </div>
+    `;
+}
+
 
 // Render multiple choice options
 const renderMultipleChoiceOptions = (options) => {
@@ -266,7 +284,7 @@ document.addEventListener('click', function(e) {
                     if (currentQuestionIndex < questions.length) {
                         renderQuestion(questions[currentQuestionIndex]);
                     } else {
-                        alert('Quiz completed!');
+                        showResults();
                     }
                 });
             }
