@@ -1,13 +1,29 @@
 /* font */
 @font-face {
-    font-family: Pixelify;
-    src: url(fonts/PixelifySans-VariableFont_wght.ttf)
+    font-family: Etnis;
+    src: url(fonts/etnis.otf)
+}
+@font-face {
+    font-family: Ninja;
+    src: url(fonts/ninja.otf)
+}
+@font-face {
+    font-family: Ichimaru;
+    src: url(fonts/ichimaru.otf)
+}
+@font-face {
+    font-family: Guanyu;
+    src: url(fonts/guanyu.otf)
+}
+@font-face {
+    font-family: Samurai;
+    src: url(fonts/samurai.otf)
 }
 
 
 html,body {
-    overflow: hidden;
-    height: 100%;
+    overflow-x: hidden;
+    /* height: 100%; */
 }
 
 #title {
@@ -55,11 +71,21 @@ html,body {
     opacity: 70%;
 }
 
-.background-text, .github-button {
+.background-text {
     position: absolute;
     z-index: 3; 
-    padding: 10px;
-    justify-content: left;
+    padding: 100px 20px 10px;
+    width: 90%;
+}
+
+.background-text h1 {
+    font-family: Ninja;
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.background-text p {
+    margin-bottom: 10px;
 }
 
 
