@@ -5,8 +5,8 @@
  }
  
  body {
-     background: #c8d0e3;
-     display: flex;
+     background: #30231b;
+     /* display: flex; */
      /* margin: auto; */
      align-items: center;
      justify-content: center;
@@ -30,44 +30,9 @@
     background-color: white;
     cursor: not-allowed;
  }
- 
 
- /* landing page setup */
 
-#title {
-    font-size: 22px;
-    margin-bottom: 50px;
-}
 
-#container {
-    width: 80%;
-    max-width: 600px;
-    background-color: #ffffff;
-    /* border-radius: 20px; */
-    /* box-shadow: 0 4px 20px rgba(0,0,0,0.3); */
-    margin: 20px;
-    padding: 50px;
-}
-
-#setup div {
-    margin: 10px 0;
-}
-
-#setup label{
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    font-size: 15px;
-}
-
-#category, #amount {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    border: 1px solid #ddd;
-}
 
 .question {
     font-weight: 500;
