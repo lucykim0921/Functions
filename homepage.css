@@ -1,3 +1,10 @@
+/* font */
+@font-face {
+    font-family: Pixelify;
+    src: url(fonts/PixelifySans-VariableFont_wght.ttf)
+}
+
+
 html,body {
     overflow: hidden;
     height: 100%;
@@ -15,9 +22,9 @@ html,body {
     height: 50vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center;
     align-items: center;
-    text-align: center;
+    text-align: center; */
 }
 
 .background-image {
@@ -52,6 +59,7 @@ html,body {
     position: absolute;
     z-index: 3; 
     padding: 10px;
+    justify-content: left;
 }
 
 
