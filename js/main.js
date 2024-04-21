@@ -191,13 +191,26 @@ function showResults() {
     dataList.innerHTML = `
         <div class="results">
             <h1>Quiz Completed!</h1>
-            <p>You answered correctly ${correctAnswersCount} out of ${questions.length} questions.</p>
+            <p>You scored ${correctAnswersCount} out of ${questions.length} questions!</p>
             <div class="buttons">
-                <button onclick="shareResults()">Share Your Result</button>
                 <button onclick="window.location.href='index.html'">Return Home</button>
+
+                <div class="sharing buttons">
+                    <a href="https://wa.me/?text=Check%20out%20this%20quiz%20about%20South%20Korea!%20https://lucykim0921.github.io/Functions" target="_blank">
+                    <button>Share on WhatsApp</button></a>
+                    <button onclick="copyLinkToClipboard()">Copy Link to Clipboard</button>
+                </div>
             </div>
         </div>
     `;
+}
+
+function copyLinkToClipboard() {
+    navigator.clipboard.writeText("https://lucykim0921.github.io/Functions").then(function() {
+        alert('Link copied to clipboard!');
+    }, function(err) {
+        console.error('Could not copy text: ', err);
+    });
 }
 
 

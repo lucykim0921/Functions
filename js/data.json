@@ -28,7 +28,8 @@
                         "imageUrl": null
                     }
                 ],
-                "answer": "52 million"
+                "answer": "52 million",
+                "description": "As of 2024, South Korea's population is approximately 51.63 million, ranking it as the 28th most populous country globally, nestled between Myanmar with about 55.23 million people and Colombia with roughly 51.51 million inhabitants."
             },
 
             {
@@ -52,7 +53,8 @@
                         "imageUrl": null
                     }
                 ],
-                "answer": ["Seoul", "Busan", "Gwanju", "Incheon"]
+                "answer": ["Seoul", "Busan", "Gwangju", "Incheon"],
+                "description": "Seoul: 10.0 million, Busan: 3.5 million, Gwangju: 1.5 million, Incheon: 2.9 million"
               },
 
 
@@ -78,7 +80,8 @@
                         "imageUrl": null
                     }
                 ],
-                "answer": "less than 1"
+                "answer": "less than 1",
+                "description": "As of 2024, South Korea's fertility rate stands at 0.81 births per woman, indicating one of the world's lowest fertility rates. This trend reflects increasing societal and economic pressures, such as the high costs associated with raising children."
             },
 
             {
@@ -103,7 +106,8 @@
                         "imageUrl": null
                     }
                 ],
-                "answer": "18%"
+                "answer": "18%",
+                "description": "South Korea has a significant portion of its population aged 65 or above, a consequence of the persistently low fertility rate, contributing to a rapidly aging demographic."
             },
 
             {
@@ -128,7 +132,8 @@
                         "imageUrl": null
                     }
                 ],
-                "answer": "Jeju-do"
+                "answer": "Jeju-do",
+                "description": "Jeju Island, renowned for its exquisite landscapes, is the most popular tourist attraction in South Korea. Also, it’s where the creator of the website grew up!"
             },
 
             {
@@ -153,7 +158,8 @@
                         "imageUrl": null
                     }
                 ],
-                "answer": "1950m"
+                "answer": "1950m",
+                "description": "Hallasan, also known as Mt. Halla, is a popular destination for climbers and takes approximately 8 to 10 hours for a round trip hike. Climbing this mountain is a common item on many South Koreans' bucket lists due to its challenging nature"
             }
         ]
     },
@@ -169,7 +175,7 @@
 
             {
                 "type": "multiple choice",
-                "question": "At what year did Korea separate into South and North?",
+                "question": "In what year were North and South Korea officially established as separate governments?",
                 "questionImage": null,
                 "options": [
                     {
@@ -189,7 +195,34 @@
                         "imageUrl": null
                     }
                 ],
-                "answer": "1953"
+                "answer": "1948",
+                "description": "In 1948, following the end of World War II and amidst growing Cold War tensions, Korea was officially divided into two separate entities: the Democratic People’s Republic of Korea (North Korea) and the Republic of Korea (South Korea). Each established its own government, marking the political division of the peninsula before the Korean War, which further solidified the divide with the creation of the Korean Demilitarized Zone in 1953."
+            },
+
+            {
+                "type": "multiple choice",
+                "question": "For how long was Korea colonized by Japan?",
+                "questionImage": null,
+                "options": [
+                    {
+                        "text": "8 years",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "22 years",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "35 years",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "49 years",
+                        "imageUrl": null
+                    }
+                ],
+                "answer": "35 years",
+                "description": "Korea was colonized by Japan from 1910 until 1945, a total of 35 years. During this time, Korea was under Japanese rule, which ended with Japan's defeat in World War II."
             },
 
             {
@@ -214,7 +247,8 @@
                         "imageUrl": "images/yisunshin.jpeg"
                     }
                 ],
-                "answer": "King Sejong"
+                "answer": "King Sejong",
+                "description": "The Korean alphabet, Hangul, was created by King Sejong the Great in the 15th century. It was introduced to promote literacy among the common people, departing from the Chinese characters that were previously used."
             },
 
             {
@@ -239,7 +273,8 @@
                         "imageUrl": "images/syngman.jpeg"
                     }
                 ],
-                "answer": "Syngman Rhee"
+                "answer": "Syngman Rhee",
+                "description": "Syngman Rhee was the first president of South Korea, serving from 1948 until his resignation in 1960. He played a significant role in the political establishment of South Korea following its separation from the North."
             },
 
             {
@@ -264,7 +299,8 @@
                         "imageUrl": null
                     }
                 ],
-                "answer": "1910"
+                "answer": "1910",
+                "description": "The monarchy system in Korea ended in 1910 when the Korean Empire was annexed by Japan. This marked the end of the Joseon dynasty and the start of Japanese colonial rule."
             },
 
             {
@@ -289,7 +325,8 @@
                         "imageUrl": null
                     }
                 ],
-                "answer": "1988"
+                "answer": "1988",
+                "description": "South Korea hosted the Summer Olympics in 1988 in Seoul. This event was significant as it marked South Korea's coming out on the world stage as a modern economic power."
             }
     ]
 },
@@ -404,7 +441,8 @@
                         "imageUrl": null
                     }
                 ],
-                "answer": "False"
+                "answer": "False",
+                "description": "In South Korea, it is customary to wait for the elder person at the table to begin eating before you do. You won't be considered rude if you take a first bite, but it's a nice manner to have!"
             },
 
             {
@@ -421,7 +459,8 @@
                         "imageUrl": null
                     }
                 ],
-                "answer": "False"
+                "answer": "False",
+                "description": "Tipping is generally not expected and is uncommon in South Korea, including for taxi services. If taxi drivers requires you to give them tips, refuse!"
             },
 
             {
@@ -438,7 +477,8 @@
                         "imageUrl": null
                     }
                 ],
-                "answer": "True"
+                "answer": "True",
+                "description": "It is considered polite and respectful to use both hands when handing something to someone older or a stranger."
             },
 
             {
@@ -455,7 +495,8 @@
                         "imageUrl": null
                     }
                 ],
-                "answer": "False"
+                "answer": "False",
+                "description": "Asking about age is quite common in South Korea as it helps determine the level of language formality to use during the conversation. However, make sure you don't assume people's age by their look!"
             },
 
             {
@@ -472,7 +513,9 @@
                         "imageUrl": null
                     }
                 ],
-                "answer": "False"
+                "answer": "False",
+                "description": "Writing a name in red ink is traditionally avoided as it was historically associated with death or bad luck."
+
             },
 
             {
@@ -497,7 +540,8 @@
                         "imageUrl": null
                     }
                 ],
-                "answer": "Bow"
+                "answer": "Bow",
+                "description": "Bowing is a customary and respectful greeting in South Korea, reflecting politeness and formality. Never kiss on the cheek to a stranger, you will make things awkward."
             },
 
             {
@@ -522,7 +566,8 @@
                         "imageUrl": null
                     }
                 ],
-                "answer": "Prepare cash in an envelope for gift for the bride & groom"
+                "answer": "Prepare cash in an envelope for gift for the bride & groom",
+                "description": "Gifting new and crisp cash in a neatly prepared envelope is a traditional and customary wedding gift in South Korea. Be sure to write your name on the envelope to let the recipients know who it's from!"
             }
 
       
