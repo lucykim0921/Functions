@@ -8,27 +8,26 @@
     src: url(fonts/ninja.otf)
 }
 @font-face {
-    font-family: Ichimaru;
-    src: url(fonts/ichimaru.otf)
-}
-@font-face {
-    font-family: Guanyu;
-    src: url(fonts/guanyu.otf)
-}
-@font-face {
     font-family: Samurai;
     src: url(fonts/samurai.otf)
+}
+@font-face {
+    font-family: NotoSerifKRLight;
+    src: url(fonts/NotoSerifKR-Light.otf);
+}
+@font-face {
+    font-family: NotoSerifKRSemibold;
+    src: url(fonts/NotoSerifKR-SemiBold.otf);
+}
+@font-face {
+    font-family: NotoSerifKRRegular;
+    src: url(fonts/NotoSerifKR-Regular.otf);
 }
 
 
 html,body {
     overflow-x: hidden;
     /* height: 100%; */
-}
-
-#title {
-    font-size: 22px;
-    margin-bottom: 50px;
 }
 
 /* landing page background setup */
@@ -75,7 +74,7 @@ html,body {
     position: absolute;
     z-index: 3; 
     padding: 100px 20px 10px;
-    width: 90%;
+    /* width: 100%; */
 }
 
 .background-text h1 {
@@ -86,16 +85,23 @@ html,body {
 
 .background-text p {
     margin-bottom: 10px;
+    font-size: 15px;
+    font-family: NotoSerifKRSemiBold;
 }
 
 
 /* quiz container setup */
 #container {
     width: 100%;
-    background-color: #848484;
-    padding: 50px;
+    background-color: #EDECE7;
+    padding: 20px;
     z-index: 500;
     position: relative;
+}
+
+h2 {
+    font-family: NotoSerifKRSemiBold;
+    font-size: 20px;
 }
 
 #setup div {
