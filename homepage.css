@@ -93,15 +93,25 @@ html,body {
 /* quiz container setup */
 #container {
     width: 100%;
-    background-color: #EDECE7;
-    padding: 20px;
+    background-image: linear-gradient(to bottom, #060402, #84674E);
+    padding: 40px;
     z-index: 500;
     position: relative;
+    color: #ffffff;
 }
 
 h2 {
     font-family: NotoSerifKRSemiBold;
     font-size: 20px;
+    color: #ffffff;
+}
+
+label {
+    font-family: NotoSerifKRRegular;
+}
+
+select {
+    background-color: #E1C0A4;
 }
 
 #setup div {
