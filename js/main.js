@@ -2,6 +2,7 @@ let currentQuestionIndex = 0;
 let questions = []; 
 let timerId;
 let correctAnswersCount = 0;
+let currentQuestion = null;
 
 
 // Function to shuffle quiz
@@ -60,6 +61,7 @@ function displayQuestionsOnLoad() {
 
 // Render each question
 function renderQuestion(question) {
+    currentQuestion = question;
     const dataList = document.getElementById('data-list');
     dataList.innerHTML = ''; 
     const timeLimit = parseInt(localStorage.getItem('timeLimit')) * 1;
@@ -120,7 +122,7 @@ function startTimer(seconds) {
 
         if (timeLeft <= 0) {
             clearInterval(timerId);
-            handleNoResponse();  // Handle the scenario when time runs out
+            handleNoResponse();  // Handle noresponse (timeout)
         }
     }, 1000); // Ensure the countdown decreases every second
 }
@@ -161,23 +163,30 @@ function addNextQuestionButton() {
 }
 
 // check answer
-function checkAndHandleAnswer(option, question) {
-    const options = document.querySelectorAll('.option');
-    options.forEach(opt => opt.disabled = true);  
+function checkAndHandleAnswerMatchName(question) {
+    const draggableItems = question.draggableItems.map(item => item.id);
+    let allCorrect = true;
+    for (let itemId of draggableItems) {
+        const draggedElement = document.getElementById('drag-' + itemId);
+        const dropArea = document.getElementById('drop-' + itemId);
 
-    const isCorrect = option.textContent.trim() === question.answer;
-    const feedbackElement = document.querySelector('.feedback');
-    if (isCorrect) {
-        feedbackElement.textContent = 'Correct answer!';
-        feedbackElement.className = 'feedback-correct';
-        correctAnswersCount++; 
-        addNextQuestionButton();
-    } else {
-        feedbackElement.textContent = 'Wrong answer!';
-        feedbackElement.className = 'feedback-incorrect';
-        addNextQuestionButton();
+        if (!dropArea.contains(draggedElement)) {
+            allCorrect = false;
+            break;
+        }
     }
 
+    const feedbackElement = document.querySelector('.feedback');
+    if (allCorrect) {
+        feedbackElement.textContent = 'Correct answer! All items are matched correctly.';
+        feedbackElement.className = 'feedback-correct';
+        correctAnswersCount++;
+    } else {
+        feedbackElement.textContent = 'Not quite right. Try again!';
+        feedbackElement.className = 'feedback-incorrect';
+    }
+
+    addNextQuestionButton();
 }
 
 // progress bar
@@ -229,7 +238,7 @@ const renderMultipleChoiceOptions = (options) => {
     `).join('');
 };
 
-// Render drag and drop options
+// Render drag and drop in order options
 const renderDragDropInOrderOptions = (options) => {
     let dragItemsHtml = options.map(option => `
         <div class="drag-item" draggable="true" ondragstart="drag(event)" id="${option.text.replace(/\s+/g, '-').toLowerCase()}">
@@ -252,7 +261,7 @@ const renderDragDropInOrderOptions = (options) => {
 
 // Render match-name options
 const renderMatchNameOptions = (draggableItems, dropAreas) => {
-    let dragItemsHtml = draggableItems.map(item => `
+     let dragItemsHtml = draggableItems.map(item => `
         <div class="drag-item" draggable="true" ondragstart="drag(event)" id="drag-${item.id}">
             ${item.text}
         </div>
@@ -312,7 +321,7 @@ document.addEventListener('click', function(e) {
                 feedbackElement.className = 'feedback-incorrect';
             }
             
-            // Add Next Question button if not already present
+            // Add Next Question button after feedback
             if (!quizItem.querySelector('.next-button')) {
                 const nextButton = document.createElement('button');
                 nextButton.textContent = 'Next Question';
@@ -352,7 +361,7 @@ function getUserAnswer(quizItem) {
 }
 
 
-// Basic drag and drop functions
+// General drag and drop functions for all drag-drop quiz
 function drag(event) {
     event.dataTransfer.setData("text", event.target.id);
 }
@@ -365,23 +374,88 @@ function drop(event) {
     event.preventDefault();
     const data = event.dataTransfer.getData("text");
     const draggedElement = document.getElementById(data);
-    let dropTarget = event.target.closest('.drop-area, .drop-point'); // This targets both drop areas for match-name and drop points for in-order.
+    let dropTarget = event.target.closest('.drop-area, .drop-point');
 
-    if (dropTarget) {
-        // For match-name type questions, validate if the drop is correct
-        if (dropTarget.classList.contains('drop-area') && draggedElement.id.startsWith('drag-')) {
-            const expectedDropId = 'drop-' + draggedElement.id.split('-')[1];
-            if (dropTarget.id === expectedDropId) {
-                if (!dropTarget.querySelector('.drag-item')) { // Prevent multiple items in one drop zone
-                    dropTarget.appendChild(draggedElement);
-                }
+    if (!dropTarget) return; // don't drop on not-drop points
+
+    // Match-name - allow dropping into any drop area
+    if (dropTarget.classList.contains('drop-area')) {
+        if (draggedElement.id.startsWith('drag-')) {
+            // Allows dropping on an already occupied drop area, removes existing if present
+            if (dropTarget.querySelector('.drag-item')) {
+                dropTarget.removeChild(dropTarget.querySelector('.drag-item'));
             }
-        } 
-        // For drag-drop-in-order type questions, allow reordering within any drop points
-        else if (dropTarget.classList.contains('drop-point')) {
-            if (!dropTarget.querySelector('.drag-item')) { // Ensure each drop point holds only one item
-                dropTarget.appendChild(draggedElement);
-            }
+            dropTarget.appendChild(draggedElement);
         }
     }
+
+    // drag-drop-in-order type questions
+    if (dropTarget.classList.contains('drop-point')) {
+        if (!dropTarget.firstChild || dropTarget.firstChild === draggedElement) {
+            dropTarget.appendChild(draggedElement);
+        }
+    }
+
+    const totalItems = document.querySelectorAll('.drag-item').length;
+    const placedItemsMatchName = document.querySelectorAll('.drop-area .drag-item').length;
+    const placedItemsInOrder = document.querySelectorAll('.drop-point .drag-item').length;
+    
+    if (totalItems === 4) { // 4 items max
+        if (placedItemsMatchName === 4 && document.querySelector('.drop-area')) {
+            checkAllDroppedMatchName();
+        }
+        if (placedItemsInOrder === 4 && document.querySelector('.drop-point')) {
+            checkAllDroppedInOrder();
+        }
+    }
+}
+
+// check answers for match name
+function checkAllDroppedMatchName() {
+    const dropAreas = document.querySelectorAll('.drop-area');
+    let allCorrect = true;
+    dropAreas.forEach(dropArea => {
+        const itemId = dropArea.id.split('-')[1];
+        const item = dropArea.querySelector('.drag-item');
+        // Check if the item in this drop area is the correct one
+        if (!item || item.id.split('-')[1] !== itemId) {
+            allCorrect = false;
+        }
+    });
+
+    const feedbackElement = document.querySelector('.feedback');
+    if (allCorrect) {
+        feedbackElement.textContent = 'Correct!';
+        feedbackElement.className = 'feedback-correct';
+    } else {
+        feedbackElement.textContent = 'Wrong answer!';
+        feedbackElement.className = 'feedback-incorrect';
+    }
+
+    addNextQuestionButton();
+}
+
+// check answers for drop in order
+function checkAllDroppedInOrder() {
+    const dropPoints = document.querySelectorAll('.drop-point');
+    let allCorrect = true;
+
+    // Check the order of items
+    dropPoints.forEach((dropPoint, index) => {
+        const item = dropPoint.firstChild;
+        if (!item || item.textContent.trim() !== currentQuestion.answer[index]) {
+            allCorrect = false;
+        }
+    });
+
+    const feedbackElement = document.querySelector('.feedback'); 
+    if (allCorrect) {
+        feedbackElement.textContent = 'Correct!';
+        feedbackElement.className = 'feedback-correct';
+    } else {
+        feedbackElement.textContent = 'Wrong answer!';
+        feedbackElement.className = 'feedback-incorrect';
+    }
+
+    addNextQuestionButton();
 }
