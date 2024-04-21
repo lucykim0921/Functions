@@ -69,6 +69,8 @@ function renderQuestion(question) {
         answersHtml = renderMultipleChoiceOptions(question.options);
     } else if (question.type === 'drag-drop-in-order') {
         answersHtml = renderDragDropInOrderOptions(question.options);
+    } else if (question.type === 'match-name') {
+        answersHtml = renderMatchNameOptions(question.draggableItems, question.dropAreas);
     }
 
      // progress bar
@@ -123,6 +125,7 @@ function startTimer(seconds) {
     }, 1000); // Ensure the countdown decreases every second
 }
 
+// no response
 function handleNoResponse() {
     const options = document.querySelectorAll('.option');
     options.forEach(option => {
@@ -136,6 +139,7 @@ function handleNoResponse() {
     addNextQuestionButton();
 }
 
+// next question button
 function addNextQuestionButton() {
     if (currentQuestionIndex < questions.length - 1) {
         const quizContainer = document.querySelector('.quiz');
@@ -156,6 +160,7 @@ function addNextQuestionButton() {
     }
 }
 
+// check answer
 function checkAndHandleAnswer(option, question) {
     const options = document.querySelectorAll('.option');
     options.forEach(opt => opt.disabled = true);  
@@ -241,6 +246,28 @@ const renderDragDropInOrderOptions = (options) => {
         <div class="drag-container">
             <div class="drag-items">${dragItemsHtml}</div>
             <div class="drop-areas">${dropPointsHtml}</div>
+        </div>
+    `;
+};
+
+// Render match-name options
+const renderMatchNameOptions = (draggableItems, dropAreas) => {
+    let dragItemsHtml = draggableItems.map(item => `
+        <div class="drag-item" draggable="true" ondragstart="drag(event)" id="drag-${item.id}">
+            ${item.text}
+        </div>
+    `).join('');
+
+    let dropAreasHtml = dropAreas.map(area => `
+        <div class="drop-area" ondragover="allowDrop(event)" ondrop="drop(event)" id="drop-${area.id}">
+            <img src="${area.imagePath}" alt="${area.id}" class="drop-image">
+        </div>
+    `).join('');
+
+    return `
+        <div class="drag-container">
+            <div class="drag-items">${dragItemsHtml}</div>
+            <div class="drop-areas">${dropAreasHtml}</div>
         </div>
     `;
 };
@@ -336,7 +363,25 @@ function allowDrop(event) {
 
 function drop(event) {
     event.preventDefault();
-    var data = event.dataTransfer.getData("text");
-    var draggedElement = document.getElementById(data);
-    event.target.appendChild(draggedElement);
+    const data = event.dataTransfer.getData("text");
+    const draggedElement = document.getElementById(data);
+    let dropTarget = event.target.closest('.drop-area, .drop-point'); // This targets both drop areas for match-name and drop points for in-order.
+
+    if (dropTarget) {
+        // For match-name type questions, validate if the drop is correct
+        if (dropTarget.classList.contains('drop-area') && draggedElement.id.startsWith('drag-')) {
+            const expectedDropId = 'drop-' + draggedElement.id.split('-')[1];
+            if (dropTarget.id === expectedDropId) {
+                if (!dropTarget.querySelector('.drag-item')) { // Prevent multiple items in one drop zone
+                    dropTarget.appendChild(draggedElement);
+                }
+            }
+        } 
+        // For drag-drop-in-order type questions, allow reordering within any drop points
+        else if (dropTarget.classList.contains('drop-point')) {
+            if (!dropTarget.querySelector('.drag-item')) { // Ensure each drop point holds only one item
+                dropTarget.appendChild(draggedElement);
+            }
+        }
+    }
 }

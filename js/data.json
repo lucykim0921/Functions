@@ -411,6 +411,82 @@
                     }
                 ],
                 "answer": "20%"
+            },
+
+            {
+                "type": "multiple choice",
+                "question": "This South Korean footballer, most commonly known globally as 'Sonny', is the most popular and famous football player in South Korea. What is his full name?",
+                "questionImage": null,
+                "options": [
+                    {
+                        "text": "Son Heung Mun",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "Son Heung Min",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "Son Heung Man",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "Son Heung Mon",
+                        "imageUrl": null
+                    }
+                ],
+                "answer": "Son Heung Min",
+                "description": "Known globally as 'Sonny', Son Heung Min is a celebrated footballer from South Korea, who plays for Tottenham Hotspur. His outstanding skills and popularity in the sport have earned him a significant reputation both domestically and internationally."
+            },
+
+            {
+                "type": "multiple choice",
+                "question": "The image below is of Lee Jae-yong, the chairman of a major Korean conglomerate. Which company does he chair?",
+                "questionImage": null,
+                "options": [
+                    {
+                        "text": "Kia",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "Hyundai",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "LG",
+                        "imageUrl": null
+                    },
+                    {
+                        "text": "Samsung",
+                        "imageUrl": null
+                    }
+                ],
+                "answer": "Samsung",
+                "description": "Lee Jae-yong serves as the chairman of Samsung, one of the largest and most influential conglomerates globally, known primarily for its electronics division. Samsung has a vast array of products and services, ranging from consumer electronics to heavy industries and financial services, solidifying its status as a major player on the global stage."
+            },
+
+            {
+                "type": "match-name",
+                "question": "Drag and drop to match Korean street food with their names!",
+                "draggableItems": [
+                    {"text": "Tteokbokki", "id": "Tteokbokki"},
+                    {"text": "Gimbap", "id": "Gimbap"},
+                    {"text": "Hotteok","id": "Hotteok"},
+                    {"text": "Pajeon","id": "Pajeon"}
+                ],
+                "dropAreas": [
+                    {"imagePath": "images/tteokbokki.jpeg", "id": "Tteokbokki"},
+                    {"imagePath": "images/gimbap.png", "id": "Gimbap"},
+                    {"imagePath": "images/hotteok.jpeg", "id": "Hotteok"},
+                    {"imagePath": "images/pajeon.jpeg","id": "Pajeon"}
+                ],
+                "answer": {
+                    "Tteokbokki": "Tteokbokki",
+                    "Gimbap": "Gimbap",
+                    "Hotteok": "Hotteok",
+                    "Pajeon": "Pajeon"
+                },
+                "description": "Drag each name to the correct image."
             }
     ]
 },
