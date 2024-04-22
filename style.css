@@ -44,7 +44,7 @@
  .background-image {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     align-items: center; /* Center vertically */
     justify-content: center;
     display: flex;
@@ -67,7 +67,7 @@
  
 section {
     width: 100%;
-    position: fixed;
+    position: absolute;
     top: 0;
     padding-top: 5%;
     padding-bottom: 5%;
@@ -82,7 +82,7 @@ section {
  button {
     position: relative;
     text-align: center;
-    padding: 10px;
+    padding: 5px;
     border: 1px solid #ffffff;
  }
 
@@ -218,8 +218,8 @@ section {
     display: flex;
     grid-template-columns: repeat(2, 1fr); 
     grid-gap: 20px; 
-    padding: 5px; 
-    width: 90%;
+    padding: 3px; 
+    width: 80%;
     justify-content: center;
     flex-wrap: wrap;
     font-size: 14px;
