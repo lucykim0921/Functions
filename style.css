@@ -28,7 +28,7 @@
 * {
     font-family: NotoSerifKRRegular;
     color: #fff;
-    margin: auto;
+    /* margin: auto; */
  }
 
 
@@ -38,31 +38,30 @@
  
  body {
     background-image: linear-gradient(to top, #433226, #fbeee5);
-     text-align: center;
+    text-align: center;
  }
 
  .background-image {
     position: relative;
     width: 100%;
-    height: 100%;
-    align-items: center; /* Center vertically */
-    justify-content: center;
+    height: 100vh; 
     display: flex;
-    z-index: -1;
-    /* justify-content: center;
-    align-items: center;
-    text-align: center; */
+    align-items: center;  
+    justify-content: center;  /* Horizontal centering */
+    z-index: 0;  /* Proper layering */
+    background-size: cover;
+    background-position: center;  /* Center the background image */
+    background-repeat: no-repeat;  /* Prevent tiling/repeating */
+    padding: 0;
+    margin: 0;
+    /* rotate: 180deg; */
 }
 
-.background-image img {
- position: relative;
- top: 0;
- left: 0;
- width: 100%;
- height: 100%;
- object-fit: cover;
- rotate: 180deg;
- opacity: 0.1;
+#background-image {
+    rotate: 180deg;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
  
 section {
@@ -148,14 +147,11 @@ section {
 .question {
     line-height: 1.5;
     color: #ffffff;
-    font-size: 18px;
+    font-size: 16px;
     text-align: center;
     padding: 5px;
-    max-width: 90%;
-    /* margin: auto; */
-    margin-top: 15px;
-    margin-bottom: 13px;
-    /* margin-bottom: 20px; */
+    max-width: 85%;
+    margin: auto;
 }
 
 .quiz {
@@ -177,15 +173,16 @@ section {
     align-items: center;
     justify-content: flex-start; /* Align children to the start of the flex container */
     width: 80%;
-    padding: 5px 0px;
+    padding: 3px 0px;
     background-color: #614f42; /* Light grey background for the entire progress bar area */
     border: 1px dotted #fff;
     /* overflow: hidden; */
+    margin: auto;
     margin-top: 30px;
 }
 
 .progress-bar {
-    height: 15px;
+    height: 10px;
     background-color: #BC8974; /* Green color for the progress part */
     width: 0%; /* Starts with 0 width and will grow to the right */
     transition: width 0.4s ease-in-out;
@@ -195,6 +192,7 @@ section {
 #progress-text {
     white-space: nowrap; /* Ensures the text does not wrap to the next line */
     margin-top: 5px;
+    margin-bottom: 20px;
     font-size: 13px;
     font-family: NotoSerifKRLight;
 }
@@ -219,11 +217,14 @@ section {
     grid-template-columns: repeat(2, 1fr); 
     grid-gap: 20px; 
     padding: 3px; 
-    width: 80%;
+    width: 90%;
     justify-content: center;
     flex-wrap: wrap;
     font-size: 14px;
     font-family: NotoSerifKRLight;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 30px;
 }
 
 .timer {
@@ -263,6 +264,10 @@ section {
 .next-button:hover {
     background-color: rgb(230, 220, 212);
     color:#30231b;
+}
+
+.exit-button-container {
+    padding-bottom: 90px;
 }
 
 .cross-button {
@@ -318,18 +323,18 @@ section {
     color: #00751A;
     background-color: #98DE9F;
     padding: 10px;
-    margin-top: 10px;
     width: 80%;
     font-family: NotoSerifKRLight;
     font-size: 13px;
+    margin: auto;
 }
 
 .feedback-incorrect {
     color: #B50D0D;
     background-color: #DE9898;
     padding: 10px;
-    margin-top: 10px;
     width: 80%;
     font-family: NotoSerifKRLight;
     font-size: 13px;
+    margin: auto;
 }
