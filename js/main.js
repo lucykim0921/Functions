@@ -81,17 +81,28 @@ function renderQuestion(question) {
 
     let questionHtml = `
         <div class="quiz" data-question-type="${question.type}" data-correct-answer="${Array.isArray(question.answer) ? question.answer.join(',') : question.answer}">
+            <div class="exit-button-container>
+                <button class="cross-button"><a href="index.html">Exit quiz</a></button>
+            </div>
+
+            <div class="quiz-content-container>
+
+                <img src="images/border.png" class="corner" id="top-left">
+                <img src="images/border.png" class="corner" id="top-right">
+                <img src="images/border.png" class="corner" id="bottom-left">
+                <img src="images/border.png" class="corner" id="bottom-right">
+
                 <div id="quiz-progress">
-                    <div class="progress-bar" style="width: 0%;"></div>
+                        <div class="progress-bar" style="width: 0%;"></div>
+                    </div>
+                    <p id="progress-text">Question 0/0</p>
+                    <div class="question">${question.question}</div>
+                    ${question.questionImage ? `<img src="${question.questionImage}" alt="Question Image">` : ''}
+                    <div class="answers">${answersHtml}</div>
+                    <div class="feedback"></div>
+                    <div class="timer">Time left: <span id="timer-span">${timeLimit}</span> seconds</div>
                 </div>
-                <p id="progress-text">Question 0/0</p>
-            <div class="question">${question.question}</div>
-            ${question.questionImage ? `<img src="${question.questionImage}" alt="Question Image">` : ''}
-            <div class="answers">${answersHtml}</div>
-            <div class="feedback"></div>
-            <div class="timer">Time left: <span id="timer-span">${timeLimit}</span> seconds</div>
-            <button class="cross-button"><a href="index.html">&#9747;</a></button>
-        </div>
+            </div>
     `;
 
     dataList.innerHTML = questionHtml; 
