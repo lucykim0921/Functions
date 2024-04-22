@@ -1,3 +1,4 @@
+
 let currentQuestionIndex = 0; 
 let questions = []; 
 let timerId;
@@ -66,6 +67,9 @@ function renderQuestion(question) {
     dataList.innerHTML = ''; 
     const timeLimit = parseInt(localStorage.getItem('timeLimit')) * 1;
 
+    console.log("Current Question:", question);  // Before HTML generation
+    console.log("Question Image URL:", question.questionImage);  // Check the image URL
+
     let answersHtml = '';
     if (question.type === 'multiple choice') {
         answersHtml = renderMultipleChoiceOptions(question.options);
@@ -85,7 +89,7 @@ function renderQuestion(question) {
                     <a href="index.html">Exit quiz</a>
             </div>
 
-            <div class="quiz-content-container>
+            <div class="quiz-content-container">
 
                 <img src="images/border.png" class="corner" id="top-left">
                 <img src="images/border.png" class="corner" id="top-left">
@@ -97,8 +101,10 @@ function renderQuestion(question) {
                         <div class="progress-bar" style="width: 0%;"></div>
                     </div>
                     <p id="progress-text">Question 0/0</p>
-                    <div class="question">${question.question}</div>
-                    ${question.questionImage ? `<img src="${question.questionImage}" alt="Question Image">` : ''}
+                    <div class="question">
+                        ${question.question}
+                        ${question.questionImage ? `<img src="${question.questionImage}" alt="Question Image">` : ''}
+                    </div>
                     <div class="answers">${answersHtml}</div>
                     <div class="feedback"></div>
                     <div class="timer">Time left: <span id="timer-span">${timeLimit}</span> seconds</div>
@@ -106,7 +112,11 @@ function renderQuestion(question) {
             </div>
     `;
 
+    console.log("Generated HTML:", questionHtml);  // After HTML generation
+
     dataList.innerHTML = questionHtml; 
+    console.log("InnerHTML of dataList:", dataList.innerHTML);  // After HTML injection
+
     updateProgress(currentQuestionIndex + 1, questions.length);
 
     startTimer(timeLimit);
