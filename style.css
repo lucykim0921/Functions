@@ -32,13 +32,18 @@
  }
 
 
+
  p, .answer, a, button, span {
     color: #fff;
  }
  
  body {
-    background-image: linear-gradient(to top, #433226, #fbeee5);
     text-align: center;
+    min-height: 100vh;
+    background-image: url('images/background-flipped.png');
+    background-size: cover;
+    background-position: center;  
+    background-repeat: no-repeat; 
  }
 
  .background-image {
@@ -46,23 +51,7 @@
     width: 100%;
     height: 100vh; 
     display: flex;
-    align-items: center;  
-    justify-content: center;  /* Horizontal centering */
-    z-index: 0;  /* Proper layering */
-    background-size: cover;
-    background-position: center;  /* Center the background image */
-    background-repeat: no-repeat;  /* Prevent tiling/repeating */
-    padding: 0;
-    margin: 0;
-    opacity: 0.5;
-    /* rotate: 180deg; */
-}
-
-#background-image {
-    rotate: 180deg;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    z-index: 0; 
 }
  
 section {
@@ -70,7 +59,6 @@ section {
     position: absolute;
     top: 0;
     padding-top: 5%;
-    padding-bottom: 5%;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -156,8 +144,12 @@ section {
     margin: auto;
 }
 
+.question img {
+    max-width: 100px;
+}
+
 .quiz {
-    background: #1e1918;
+    background: #29221f;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -175,7 +167,7 @@ section {
     align-items: center;
     justify-content: flex-start; 
     padding: 3px 0px;
-    background-color: #614f42; 
+    background-color: #110d0a; 
     border: 1px dotted #fff;
     margin: auto;
     margin-top: 30px;
@@ -184,7 +176,7 @@ section {
 
 .progress-bar {
     height: 10px;
-    background-color: #BC8974; 
+    background-color: #da8a68; 
     width: 0%;
     transition: width 0.4s ease-in-out;
     margin: 0 5px;
@@ -198,6 +190,11 @@ section {
     font-family: NotoSerifKRLight;
 }
 
+.question img {
+    max-width: 300px;
+    margin-top: 20px;
+}
+
 .option {
     display: flex;
     flex-direction: column;
@@ -209,7 +206,7 @@ section {
 
 .option img {
     margin-top: 5px;
-    max-width: 150px;
+    max-width: 100px;
     height: auto;
 }
 
@@ -294,9 +291,10 @@ section {
 }
 
 .drag-item {
-    background-color: pink;
+    background-color: rgb(255, 234, 192);
     flex-direction: column;
     padding: 1em;
+    color: black;
     border: 1px dashed #fff;
     margin: 1em;
     cursor: grab;
@@ -338,4 +336,31 @@ section {
     font-family: NotoSerifKRSemibold;
     font-size: 13px;
     margin: auto;
+}
+
+
+@media (min-width: 700px) {
+
+    section {
+        padding-top: 2%;
+        padding-bottom: 5%;
+    }
+
+    .quiz {
+        min-width: 680px;
+    }
+
+    button {
+        padding: 8px;
+        font-size: 15px;
+    }
+
+    .question {
+        max-width: 70%;
+        font-size: 20px;
+    }
+
+    .option img {
+        max-width: 120px;
+    }
 }

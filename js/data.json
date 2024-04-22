@@ -112,7 +112,7 @@
 
             {
                 "type": "multiple choice",
-                "question": "What is the name of this island, a home to natural wonders and Unesco World Heritage Sites?",
+                "question": "What is the name of this island, one of the Unesco World Heritage Site?",
                 "questionImage": "images/jeju.jpeg",
                 "options": [
                     {
@@ -412,7 +412,7 @@
 
             {
                 "type": "multiple choice",
-                "question": "This South Korean footballer, most commonly known globally as 'Sonny', is the most popular and famous football player in South Korea. What is his full name?",
+                "question": "This South Korean footballer, most commonly known as 'Sonny', is the most famous football player in South Korea. What is his full name?",
                 "questionImage": null,
                 "options": [
                     {
