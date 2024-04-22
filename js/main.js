@@ -81,8 +81,8 @@ function renderQuestion(question) {
 
     let questionHtml = `
         <div class="quiz" data-question-type="${question.type}" data-correct-answer="${Array.isArray(question.answer) ? question.answer.join(',') : question.answer}">
-            <div class="exit-button-container>
-                <button class="cross-button"><a href="index.html">Exit quiz</a></button>
+            <div class="exit-button-container">
+                    <a href="index.html">Exit quiz</a>
             </div>
 
             <div class="quiz-content-container>

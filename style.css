@@ -54,6 +54,7 @@
     background-repeat: no-repeat;  /* Prevent tiling/repeating */
     padding: 0;
     margin: 0;
+    opacity: 0.5;
     /* rotate: 180deg; */
 }
 
@@ -145,9 +146,10 @@ section {
 }
 
 .question {
+    font-family: NotoSerifKRSemibold;
     line-height: 1.5;
     color: #ffffff;
-    font-size: 16px;
+    font-size: 18px;
     text-align: center;
     padding: 5px;
     max-width: 85%;
@@ -171,26 +173,25 @@ section {
 #quiz-progress {
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Align children to the start of the flex container */
-    width: 80%;
+    justify-content: flex-start; 
     padding: 3px 0px;
-    background-color: #614f42; /* Light grey background for the entire progress bar area */
+    background-color: #614f42; 
     border: 1px dotted #fff;
-    /* overflow: hidden; */
     margin: auto;
     margin-top: 30px;
+    width: 80%;
 }
 
 .progress-bar {
     height: 10px;
-    background-color: #BC8974; /* Green color for the progress part */
-    width: 0%; /* Starts with 0 width and will grow to the right */
+    background-color: #BC8974; 
+    width: 0%;
     transition: width 0.4s ease-in-out;
     margin: 0 5px;
 }
 
 #progress-text {
-    white-space: nowrap; /* Ensures the text does not wrap to the next line */
+    white-space: nowrap; 
     margin-top: 5px;
     margin-bottom: 20px;
     font-size: 13px;
@@ -216,7 +217,7 @@ section {
     display: flex;
     grid-template-columns: repeat(2, 1fr); 
     grid-gap: 20px; 
-    padding: 3px; 
+    padding: 5px; 
     width: 90%;
     justify-content: center;
     flex-wrap: wrap;
@@ -230,6 +231,7 @@ section {
 .timer {
     margin-top: 20px;
     margin-bottom: 20px;
+    font-size: 13px;
 }
 
 .option-selected {
@@ -267,20 +269,19 @@ section {
 }
 
 .exit-button-container {
-    padding-bottom: 90px;
+    position:relative;
+    /* width: auto; */
+    height: 30px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    text-align: left;
 }
 
-.cross-button {
-    font-size: 25px;
-    position: absolute;
-    left: 15px;
-    top: 5px;
-    border: transparent;
+.exit-button-container a {
+   font-size: 13px;
 }
 
-.cross-button:hover {
-    background-color: transparent;
-}
+
 
 /* drag */
 
@@ -324,7 +325,7 @@ section {
     background-color: #98DE9F;
     padding: 10px;
     width: 80%;
-    font-family: NotoSerifKRLight;
+    font-family: NotoSerifKRSemibold;
     font-size: 13px;
     margin: auto;
 }
@@ -334,7 +335,7 @@ section {
     background-color: #DE9898;
     padding: 10px;
     width: 80%;
-    font-family: NotoSerifKRLight;
+    font-family: NotoSerifKRSemibold;
     font-size: 13px;
     margin: auto;
 }
