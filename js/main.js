@@ -88,6 +88,7 @@ function renderQuestion(question) {
             <div class="quiz-content-container>
 
                 <img src="images/border.png" class="corner" id="top-left">
+                <img src="images/border.png" class="corner" id="top-left">
                 <img src="images/border.png" class="corner" id="top-right">
                 <img src="images/border.png" class="corner" id="bottom-left">
                 <img src="images/border.png" class="corner" id="bottom-right">
