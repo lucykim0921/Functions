@@ -151,12 +151,12 @@ label, select, input {
 }
 
 select, input {
-    background-color: #E1C0A4; 
+    background-image: linear-gradient(to right, #e5d1c0, #baa38e);
     width: 100%;
     padding: 10px;
-    border: none;
+    border: 1px dashed #fff;
     margin-bottom: 10px;
-    box-shadow: inset 3px -3px 20px rgba(0,0,0,0.5);
+    /* box-shadow: inset 3px -3px 20px rgba(0,0,0,0.5); */
 }
 
 .start-button-container {
