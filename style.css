@@ -1,3 +1,29 @@
+/* font */
+@font-face {
+    font-family: Etnis;
+    src: url(fonts/etnis.otf)
+}
+@font-face {
+    font-family: Ninja;
+    src: url(fonts/ninja.otf)
+}
+@font-face {
+    font-family: Samurai;
+    src: url(fonts/samurai.otf)
+}
+@font-face {
+    font-family: NotoSerifKRLight;
+    src: url(fonts/NotoSerifKR-Light.otf);
+}
+@font-face {
+    font-family: NotoSerifKRSemibold;
+    src: url(fonts/NotoSerifKR-SemiBold.otf);
+}
+@font-face {
+    font-family: NotoSerifKRRegular;
+    src: url(fonts/NotoSerifKR-Regular.otf);
+}
+
 
 * {
     font-family: NotoSerifKRRegular;
@@ -48,13 +74,46 @@
  }
 
 
+.quiz-content-container {
+    position: relative;
+}
 
+.corner {
+    position: absolute;
+    width: 140px; 
+    height: 140px; 
+    /* z-index: 1000; */
+    padding: 10px;
+}
+
+#top-left {
+    top: 0;
+    left: 0;
+    transform: rotate(0deg); 
+}
+
+#top-right {
+    top: 0;
+    right: 0;
+    transform: rotate(90deg);
+}
+
+#bottom-left {
+    bottom: 0;
+    left: 0;
+    transform: rotate(270deg); 
+}
+
+#bottom-right {
+    bottom: 0;
+    right: 0;
+    transform: rotate(180deg); 
+}
 
 .question {
-    font-weight: 500;
     line-height: 1.5;
     color: #ffffff;
-    font-size: 16px;
+    font-size: 20px;
     text-align: center;
     padding: 10px;
     max-width: 80%;
@@ -81,22 +140,24 @@
     justify-content: flex-start; /* Align children to the start of the flex container */
     width: 80%;
     padding: 5px 0;
-    background-color: #392408; /* Light grey background for the entire progress bar area */
+    background-color: #614f42; /* Light grey background for the entire progress bar area */
+    border: 1px dotted #fff;
     overflow: hidden;
 }
 
 .progress-bar {
-    height: 20px;
-    background-color: #4CAF50; /* Green color for the progress part */
+    height: 15px;
+    background-color: #BC8974; /* Green color for the progress part */
     width: 0%; /* Starts with 0 width and will grow to the right */
     transition: width 0.4s ease-in-out;
     margin: 0 5px;
 }
 
 #progress-text {
-    padding-left: 10px; /* Adds space between the progress bar and the text */
     white-space: nowrap; /* Ensures the text does not wrap to the next line */
-    margin: 0;
+    margin-top: 10px;
+    font-size: 15px;
+    font-family: NotoSerifKRLight;
 }
 
 .option {
@@ -122,6 +183,13 @@
     width: 80%;
     justify-content: center;
     flex-wrap: wrap;
+    font-size: 15px;
+    font-family: NotoSerifKRLight;
+}
+
+.timer {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .option-selected {
@@ -210,8 +278,8 @@
     border-color: #c3e6cb;
     padding: 10px;
     margin-top: 10px;
-    border-radius: 5px;
     width: 80%;
+    font-family: NotoSerifKRLight;
 }
 
 .feedback-incorrect {
@@ -220,6 +288,6 @@
     border-color: #e6c3c3;
     padding: 10px;
     margin-top: 10px;
-    border-radius: 5px;
-    width: 90%;
+    width: 80%;
+    font-family: NotoSerifKRLight;
 }
