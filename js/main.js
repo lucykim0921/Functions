@@ -247,32 +247,6 @@ function handleNoResponse() {
     addNextQuestionButton();
 }
 
-// check answer - match name
-// function checkAndHandleAnswerMatchName(question) {
-//     const draggableItems = question.draggableItems.map(item => item.id);
-//     let allCorrect = true;
-//     for (let itemId of draggableItems) {
-//         const draggedElement = document.getElementById('drag-' + itemId);
-//         const dropArea = document.getElementById('drop-' + itemId);
-
-//         if (!dropArea.contains(draggedElement)) {
-//             allCorrect = false;
-//             break;
-//         }
-//     }
-
-//     const feedbackElement = document.querySelector('.feedback');
-//     if (allCorrect) {
-//         feedbackElement.textContent = 'Correct answer! All items are matched correctly.';
-//         feedbackElement.className = 'feedback-correct';
-//         correctAnswersCount++;
-//     } else {
-//         feedbackElement.textContent = 'Not quite right. Try again!';
-//         feedbackElement.className = 'feedback-incorrect';
-//     }
-
-//     addNextQuestionButton();
-// }
 
 // check answers for match name
 function checkAllDroppedMatchName() {
@@ -281,7 +255,7 @@ function checkAllDroppedMatchName() {
     dropAreas.forEach(dropArea => {
         const itemId = dropArea.id.split('-')[1];
         const item = dropArea.querySelector('.drag-item');
-        // Check if the item in this drop area is the correct one
+
         if (!item || item.id.split('-')[1] !== itemId) {
             allCorrect = false;
         }
@@ -458,7 +432,7 @@ function drop(event) {
     const draggedElement = document.getElementById(data);
     let dropTarget = event.target.closest('.drop-area, .drop-point');
 
-    if (!dropTarget) return; // don't drop on not-drop points
+    if (!dropTarget) return; 
 
     // Match-name - allow dropping into any drop area
     if (dropTarget.classList.contains('drop-area')) {

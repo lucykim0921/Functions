@@ -96,7 +96,7 @@ html,body {
 /* quiz container setup */
 #container {
     width: 100%;
-    background-image: linear-gradient(to bottom, #060402, #84674E);
+    background: #29221f;
     padding: 40px 25px 40px;
     /* z-index: 500; */
     position: relative;
