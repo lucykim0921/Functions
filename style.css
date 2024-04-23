@@ -364,4 +364,8 @@ section {
     .option img {
         max-width: 120px;
     }
+
+    .question img {
+        max-width: 430px;
+    }
 }
