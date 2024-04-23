@@ -413,7 +413,7 @@
     
                 {
                     "type": "multiple choice",
-                    "question": "This Korean footballer, commonly known as 'Sonny', is the most famous football player in South Korea. What is his full name?",
+                    "question": "What is the full name of this Korean footballer, who’s most commonly known as ‘Sonny’?",
                     "questionImage": "images/sonny.png",
                     "options": [
                         {
@@ -439,7 +439,7 @@
     
                 {
                     "type": "multiple choice",
-                    "question": "The image below is Lee Jaeyong, chairman of the biggest Korean conglomerate. Which company does he chair?",
+                    "question": "What company does Lee Jaeyong, a chairman of the biggest Korean coglomerate, chair?",
                     "questionImage": "images/samsung.png",
                     "options": [
                         {

@@ -38,8 +38,7 @@ function startQuiz() {
                 console.error('Selected category not found in data:', category);
             }
         }
-        
-
+    
         localStorage.setItem('questions', JSON.stringify(filteredQuestions));
         localStorage.setItem('timeLimit', timeLimit); 
         window.location.href = 'questions.html';
@@ -67,8 +66,8 @@ function renderQuestion(question) {
     dataList.innerHTML = ''; 
     const timeLimit = parseInt(localStorage.getItem('timeLimit')) * 1;
 
-    console.log("Current Question:", question);  // Before HTML generation
-    console.log("Question Image URL:", question.questionImage);  // Check the image URL
+    console.log("Current Question:", question);  
+    console.log("Question Image URL:", question.questionImage);  
 
     let answersHtml = '';
     if (question.type === 'multiple choice') {
@@ -112,10 +111,9 @@ function renderQuestion(question) {
             </div>
     `;
 
-    console.log("Generated HTML:", questionHtml);  // After HTML generation
+    console.log("Generated HTML:", questionHtml);  
 
     dataList.innerHTML = questionHtml; 
-    console.log("InnerHTML of dataList:", dataList.innerHTML);  // After HTML injection
 
     updateProgress(currentQuestionIndex + 1, questions.length);
 
