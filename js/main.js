@@ -108,14 +108,16 @@ function renderQuestion(question) {
 
                     <div class="answers">${answersHtml}</div>
 
+                    <div class="feedback"></div>
+
+                    <div class="timer">Time left: <span id="timer-span">${timeLimit}</span> seconds</div>
+                
                     <div class="description" style="display: none;">
+                        <div class="divider"></div>
                         <h3>Correct answer: <span class="correct-answer">${question.answer}</span></h3>
                         <p>${question.description}</p>
                     </div>
-
-                    <div class="feedback"></div>
-
-                    <div class="timer">Time left: <span class="timer-span">${timeLimit}</span> seconds</div>
+                
                 </div>
             </div>
     `;
