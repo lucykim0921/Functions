@@ -33,6 +33,11 @@
  }
 
 
+.timer-span {
+    font-family: NotoSerifKRSemibold;
+    color: #ff931f;
+    font-size: 17px;
+ }
 
  p, .answer, a, button, span {
     color: #fff;

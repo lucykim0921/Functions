@@ -98,15 +98,24 @@ function renderQuestion(question) {
 
                 <div id="quiz-progress">
                         <div class="progress-bar" style="width: 0%;"></div>
-                    </div>
+                </div>
                     <p id="progress-text">Question 0/0</p>
+
                     <div class="question">
                         ${question.question} <br>
                         ${question.questionImage ? `<img src="${question.questionImage}" alt="Question Image">` : ''}
                     </div>
+
                     <div class="answers">${answersHtml}</div>
+
+                    <div class="description" style="display: none;">
+                        <h3>Correct answer: <span class="correct-answer">${question.answer}</span></h3>
+                        <p>${question.description}</p>
+                    </div>
+
                     <div class="feedback"></div>
-                    <div class="timer">Time left: <span id="timer-span">${timeLimit}</span> seconds</div>
+
+                    <div class="timer">Time left: <span class="timer-span">${timeLimit}</span> seconds</div>
                 </div>
             </div>
     `;
@@ -180,9 +189,15 @@ document.addEventListener('click', function(e) {
                 if (isCorrect) {
                     correctAnswersCount++;
                 }
-            const feedbackElement = quizItem.querySelector('.feedback');
-            feedbackElement.textContent = isCorrect ? 'Correct answer!' : 'Wrong answer!';
-            feedbackElement.className = isCorrect ? 'feedback-correct' : 'feedback-incorrect';
+                const feedbackElement = quizItem.querySelector('.feedback');
+                const descriptionElement = quizItem.querySelector('.description');
+                feedbackElement.textContent = isCorrect ? 'Correct answer!' : 'Wrong answer!';
+                feedbackElement.className = isCorrect ? 'feedback-correct' : 'feedback-incorrect';
+
+                if (!isCorrect) {
+                    descriptionElement.style.display = 'block'; 
+                }        
+
 
             // Determine the next action based on question number
             if (currentQuestionIndex < questions.length - 1) {
