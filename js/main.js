@@ -179,6 +179,9 @@ document.addEventListener('click', function(e) {
             e.target.classList.add('option-selected');
 
             const isCorrect = checkAnswer(quizItem);
+                if (isCorrect) {
+                    correctAnswersCount++;
+                }
             const feedbackElement = quizItem.querySelector('.feedback');
             feedbackElement.textContent = isCorrect ? 'Correct answer!' : 'Wrong answer!';
             feedbackElement.className = isCorrect ? 'feedback-correct' : 'feedback-incorrect';
@@ -415,6 +418,8 @@ const renderDragDropInOrderOptions = (options) => {
         </div>
     `;
 };
+
+
 
 // Render match-name options
 const renderMatchNameOptions = (draggableItems, dropAreas) => {
