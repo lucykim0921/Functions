@@ -102,7 +102,7 @@ function renderQuestion(question) {
                     </div>
                     <p id="progress-text">Question 0/0</p>
                     <div class="question">
-                        ${question.question}
+                        ${question.question} <br>
                         ${question.questionImage ? `<img src="${question.questionImage}" alt="Question Image">` : ''}
                     </div>
                     <div class="answers">${answersHtml}</div>
@@ -124,7 +124,7 @@ function renderQuestion(question) {
     document.querySelectorAll('.option').forEach(option => {
         option.addEventListener('click', function() {
             clearInterval(timerId);  
-            checkAndHandleAnswer(this, question);
+            // checkAndHandleAnswer(this, question);
         });
     });
 }
@@ -149,6 +149,89 @@ function startTimer(seconds) {
     }, 1000); // Ensure the countdown decreases every second
 }
 
+
+// Event listeners for start button
+document.addEventListener('DOMContentLoaded', function() {
+    const startButton = document.querySelector('.start-button');
+    const dataListElement = document.getElementById('data-list');
+
+    if (startButton) {
+        startButton.addEventListener('click', startQuiz);
+    }
+    if (dataListElement) {
+        displayQuestionsOnLoad();
+    }
+});
+
+// Event listeners and interactions
+document.addEventListener('click', function(e) {
+    if (e.target && e.target.classList.contains('option')) {
+        const quizItem = e.target.closest('.quiz');
+        const optionsContainer = e.target.closest('.answers');
+        const options = optionsContainer.querySelectorAll('.option');
+
+        if (!e.target.disabled) {
+            // Disable all options after one is clicked
+            options.forEach(option => {
+                option.disabled = true; // Disable the button
+                option.classList.remove('option-selected');
+            });
+            e.target.classList.add('option-selected');
+
+            const isCorrect = checkAnswer(quizItem);
+            const feedbackElement = quizItem.querySelector('.feedback');
+            feedbackElement.textContent = isCorrect ? 'Correct answer!' : 'Wrong answer!';
+            feedbackElement.className = isCorrect ? 'feedback-correct' : 'feedback-incorrect';
+
+            // Determine the next action based on question number
+            if (currentQuestionIndex < questions.length - 1) {
+                // Not the last question 
+                if (!quizItem.querySelector('.next-button')) {
+                    const nextButton = document.createElement('button');
+                    nextButton.textContent = 'Next Question';
+                    nextButton.className = 'next-button';
+                    quizItem.appendChild(nextButton);
+
+                    nextButton.addEventListener('click', () => {
+                        currentQuestionIndex++;
+                        renderQuestion(questions[currentQuestionIndex]);
+                    });
+                }
+            } else {
+                // Last question 
+                const resultButton = document.createElement('button');
+                resultButton.textContent = 'See Results!';
+                resultButton.className = 'next-button'; 
+                quizItem.appendChild(resultButton);
+
+                resultButton.addEventListener('click', () => {
+                    showResults();
+                });
+            }
+        }
+    }
+});
+
+// Check the correctness - multiple choice
+function checkAnswer(quizItem) {
+    const correctAnswer = quizItem.getAttribute('data-correct-answer').split(',');
+    let userAnswer = getUserAnswer(quizItem);
+
+    return JSON.stringify(userAnswer) === JSON.stringify(correctAnswer);
+
+}
+
+// Extract the user's answer based on the type of question
+function getUserAnswer(quizItem) {
+    if (quizItem.getAttribute('data-question-type') === 'multiple choice') {
+        const selectedOption = quizItem.querySelector('.option-selected');
+        return selectedOption ? [selectedOption.textContent.trim()] : [];
+    } else {
+        const draggableItems = Array.from(quizItem.querySelectorAll('.drag-item'));
+        return draggableItems.map(item => item.id);
+    }
+}
+
 // no response
 function handleNoResponse() {
     const options = document.querySelectorAll('.option');
@@ -159,6 +242,85 @@ function handleNoResponse() {
     const feedbackElement = document.querySelector('.feedback');
     feedbackElement.textContent = 'Time out! No answer selected.';
     feedbackElement.className = 'feedback-incorrect';
+
+    addNextQuestionButton();
+}
+
+// check answer - match name
+// function checkAndHandleAnswerMatchName(question) {
+//     const draggableItems = question.draggableItems.map(item => item.id);
+//     let allCorrect = true;
+//     for (let itemId of draggableItems) {
+//         const draggedElement = document.getElementById('drag-' + itemId);
+//         const dropArea = document.getElementById('drop-' + itemId);
+
+//         if (!dropArea.contains(draggedElement)) {
+//             allCorrect = false;
+//             break;
+//         }
+//     }
+
+//     const feedbackElement = document.querySelector('.feedback');
+//     if (allCorrect) {
+//         feedbackElement.textContent = 'Correct answer! All items are matched correctly.';
+//         feedbackElement.className = 'feedback-correct';
+//         correctAnswersCount++;
+//     } else {
+//         feedbackElement.textContent = 'Not quite right. Try again!';
+//         feedbackElement.className = 'feedback-incorrect';
+//     }
+
+//     addNextQuestionButton();
+// }
+
+// check answers for match name
+function checkAllDroppedMatchName() {
+    const dropAreas = document.querySelectorAll('.drop-area');
+    let allCorrect = true;
+    dropAreas.forEach(dropArea => {
+        const itemId = dropArea.id.split('-')[1];
+        const item = dropArea.querySelector('.drag-item');
+        // Check if the item in this drop area is the correct one
+        if (!item || item.id.split('-')[1] !== itemId) {
+            allCorrect = false;
+        }
+    });
+
+    const feedbackElement = document.querySelector('.feedback');
+    if (allCorrect) {
+        feedbackElement.textContent = 'Correct!';
+        feedbackElement.className = 'feedback-correct';
+        correctAnswersCount++;
+    } else {
+        feedbackElement.textContent = 'Wrong answer!';
+        feedbackElement.className = 'feedback-incorrect';
+    }
+
+    addNextQuestionButton();
+}
+
+// check answers - drop in order
+function checkAllDroppedInOrder() {
+    const dropPoints = document.querySelectorAll('.drop-point');
+    let allCorrect = true;
+
+    // Check the order of items
+    dropPoints.forEach((dropPoint, index) => {
+        const item = dropPoint.firstChild;
+        if (!item || item.textContent.trim() !== currentQuestion.answer[index]) {
+            allCorrect = false;
+        }
+    });
+
+    const feedbackElement = document.querySelector('.feedback'); 
+    if (allCorrect) {
+        feedbackElement.textContent = 'Correct!';
+        feedbackElement.className = 'feedback-correct';
+        correctAnswersCount++;
+    } else {
+        feedbackElement.textContent = 'Wrong answer!';
+        feedbackElement.className = 'feedback-incorrect';
+    }
 
     addNextQuestionButton();
 }
@@ -182,33 +344,6 @@ function addNextQuestionButton() {
         console.log("showing result")
         showResults();
     }
-}
-
-// check answer
-function checkAndHandleAnswerMatchName(question) {
-    const draggableItems = question.draggableItems.map(item => item.id);
-    let allCorrect = true;
-    for (let itemId of draggableItems) {
-        const draggedElement = document.getElementById('drag-' + itemId);
-        const dropArea = document.getElementById('drop-' + itemId);
-
-        if (!dropArea.contains(draggedElement)) {
-            allCorrect = false;
-            break;
-        }
-    }
-
-    const feedbackElement = document.querySelector('.feedback');
-    if (allCorrect) {
-        feedbackElement.textContent = 'Correct answer! All items are matched correctly.';
-        feedbackElement.className = 'feedback-correct';
-        correctAnswersCount++;
-    } else {
-        feedbackElement.textContent = 'Not quite right. Try again!';
-        feedbackElement.className = 'feedback-incorrect';
-    }
-
-    addNextQuestionButton();
 }
 
 // progress bar
@@ -303,84 +438,6 @@ const renderMatchNameOptions = (draggableItems, dropAreas) => {
     `;
 };
 
-// Event listeners for start button
-document.addEventListener('DOMContentLoaded', function() {
-    const startButton = document.querySelector('.start-button');
-    const dataListElement = document.getElementById('data-list');
-
-    if (startButton) {
-        startButton.addEventListener('click', startQuiz);
-    }
-    if (dataListElement) {
-        displayQuestionsOnLoad();
-    }
-});
-
-// Event listeners and interactions
-document.addEventListener('click', function(e) {
-    if (e.target && e.target.classList.contains('option')) {
-        const quizItem = e.target.closest('.quiz');
-        const optionsContainer = e.target.closest('.answers');
-        const options = optionsContainer.querySelectorAll('.option');
-        
-
-        if (!e.target.disabled) {
-            // Disable all options after one is clicked
-            options.forEach(option => {
-                option.disabled = true; // Disable the button
-                option.classList.remove('option-selected');
-            });
-            e.target.classList.add('option-selected'); 
-            
-
-            const isCorrect = checkAnswer(quizItem);
-            const feedbackElement = quizItem.querySelector('.feedback');
-            if (isCorrect) {
-                feedbackElement.textContent = 'Correct answer!';
-                feedbackElement.className = 'feedback-correct';
-            } else {
-                feedbackElement.textContent = 'Wrong answer!';
-                feedbackElement.className = 'feedback-incorrect';
-            }
-            
-            // Add Next Question button after feedback
-            if (!quizItem.querySelector('.next-button')) {
-                const nextButton = document.createElement('button');
-                nextButton.textContent = 'Next Question';
-                nextButton.className = 'next-button';
-                quizItem.appendChild(nextButton);
-
-                nextButton.addEventListener('click', () => {
-                    currentQuestionIndex++;
-                    if (currentQuestionIndex < questions.length) {
-                        renderQuestion(questions[currentQuestionIndex]);
-                    } else {
-                        showResults();
-                    }
-                });
-            }
-        }
-    }
-});
-
-// Check the correctness 
-function checkAnswer(quizItem) {
-    const correctAnswer = quizItem.getAttribute('data-correct-answer').split(',');
-    let userAnswer = getUserAnswer(quizItem);
-
-    return JSON.stringify(userAnswer) === JSON.stringify(correctAnswer);
-}
-
-// Extract the user's answer based on the type of question
-function getUserAnswer(quizItem) {
-    if (quizItem.getAttribute('data-question-type') === 'multiple choice') {
-        const selectedOption = quizItem.querySelector('.option-selected');
-        return selectedOption ? [selectedOption.textContent.trim()] : [];
-    } else {
-        const draggableItems = Array.from(quizItem.querySelectorAll('.drag-item'));
-        return draggableItems.map(item => item.id);
-    }
-}
 
 
 // General drag and drop functions for all drag-drop quiz
@@ -432,52 +489,6 @@ function drop(event) {
     }
 }
 
-// check answers for match name
-function checkAllDroppedMatchName() {
-    const dropAreas = document.querySelectorAll('.drop-area');
-    let allCorrect = true;
-    dropAreas.forEach(dropArea => {
-        const itemId = dropArea.id.split('-')[1];
-        const item = dropArea.querySelector('.drag-item');
-        // Check if the item in this drop area is the correct one
-        if (!item || item.id.split('-')[1] !== itemId) {
-            allCorrect = false;
-        }
-    });
 
-    const feedbackElement = document.querySelector('.feedback');
-    if (allCorrect) {
-        feedbackElement.textContent = 'Correct!';
-        feedbackElement.className = 'feedback-correct';
-    } else {
-        feedbackElement.textContent = 'Wrong answer!';
-        feedbackElement.className = 'feedback-incorrect';
-    }
 
-    addNextQuestionButton();
-}
 
-// check answers for drop in order
-function checkAllDroppedInOrder() {
-    const dropPoints = document.querySelectorAll('.drop-point');
-    let allCorrect = true;
-
-    // Check the order of items
-    dropPoints.forEach((dropPoint, index) => {
-        const item = dropPoint.firstChild;
-        if (!item || item.textContent.trim() !== currentQuestion.answer[index]) {
-            allCorrect = false;
-        }
-    });
-
-    const feedbackElement = document.querySelector('.feedback'); 
-    if (allCorrect) {
-        feedbackElement.textContent = 'Correct!';
-        feedbackElement.className = 'feedback-correct';
-    } else {
-        feedbackElement.textContent = 'Wrong answer!';
-        feedbackElement.className = 'feedback-incorrect';
-    }
-
-    addNextQuestionButton();
-}

@@ -59,7 +59,8 @@ section {
     width: 100%;
     position: absolute;
     top: 0;
-    padding-top: 5%;
+    padding-top: 5px;
+    padding-bottom: 5px;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -283,6 +284,9 @@ section {
 
 /* drag */
 
+.drop-areas img {
+    border: 1px dashed #fff;
+}
 
 .drag-items {
     display: flex;
@@ -292,10 +296,9 @@ section {
 }
 
 .drag-item {
-    background-color: rgb(255, 234, 192);
+    background-color: rgba(54, 39, 10, 0.4);
     flex-direction: column;
     padding: 1em;
-    color: black;
     border: 1px dashed #fff;
     margin: 1em;
     cursor: grab;
@@ -339,7 +342,7 @@ section {
     margin: auto;
 }
 
-
+/* 
 @media (min-width: 700px) {
 
     section {
@@ -368,4 +371,34 @@ section {
     .question img {
         max-width: 430px;
     }
+} */
+
+@media (min-width: 700px) {
+
+    section {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .option img {
+        max-width: 120px;
+    }
+
+    .question {
+        max-width: 70%;
+    }
+
+    .quiz {
+        max-width: 680px;
+    }
+
+    button {
+        padding: 8px;
+        font-size: 15px;
+    }
+
+    .corner {
+    width: 200px; 
+    height: 200px;
+    } 
 }
