@@ -61,6 +61,8 @@ function displayQuestionsOnLoad() {
 
 // Render each question
 function renderQuestion(question) {
+    window.scrollTo(0, 0);
+    
     currentQuestion = question;
     const dataList = document.getElementById('data-list');
     dataList.innerHTML = ''; 
@@ -225,6 +227,9 @@ document.addEventListener('click', function(e) {
                 });
             }
         }
+
+         // Scroll to bottom
+         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
 });
 
