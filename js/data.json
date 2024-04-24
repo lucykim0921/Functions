@@ -382,7 +382,8 @@
                             "imageUrl": "images/lisa.jpg"
                         }
                     ],
-                    "answer": "Lisa - Blackpink"
+                    "answer": "Lisa - Blackpink",
+                    "description": "As of 2024, Lisa hit more than 100 million followers on Instagram, making her the most followed Kpop idol in Instagram. "
                 },
     
                 {
@@ -407,7 +408,8 @@
                             "imageUrl": "images/wrestling.jpeg"
                         }
                     ],
-                    "answer": "Archery"
+                    "answer": "Archery",
+                    "description": ",South Korean archers have demonstrated exceptional skill in the Olympics. As of the 2020 Tokyo Games, they have amassed a total of 42 medals throughout Olympic history, including 26 golds, 9 silvers, and 7 bronzes."
                 },
     
                 {
@@ -432,7 +434,8 @@
                             "imageUrl": null
                         }
                     ],
-                    "answer": "20%"
+                    "answer": "20%",
+                    "description": "'Kim' is the most common surname in Korea. In fact, three out of four Koreans in the MPSCD course bear the last name Kim!"
                 },
     
                 {
