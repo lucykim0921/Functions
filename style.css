@@ -372,19 +372,24 @@ section {
 
 /* drag */
 
-.drop-areas img {
-    border: 1px dashed #fff;
-}
 
-.drop-area, .drop-point {
-    z-index: 1000;
+.drag-container {
+    justify-content: space-around;
+    width: 100%;
 }
 
 .drag-items {
-    display: flex;
+    width: 100%;
     justify-content: center;
     text-align: center;
     margin-bottom: 50px;
+    display: flex;
+}
+
+.drop-areas {
+    min-height: 80px;
+    width: 100%;
+    display: flex;
 }
 
 .drag-item {
@@ -392,19 +397,31 @@ section {
     flex-direction: column;
     padding: 1em;
     border: 1px dashed #fff;
-    margin: 1em;
+    margin: 0.5sem;
     cursor: grab;
 }
 
-.drag-item:active {
-    cursor: grabbing;
+.drag-item, .drop-point {
+    flex: 1;
+    padding: 10px;
+    margin: 5px;
+    cursor: grab; 
+    align-items: center;
+    justify-content: center;
 }
 
-.drop-areas {
-    display: flex;
-    justify-content: center;
-    min-height: 100px;
+.drop-area, .drop-point {
+    z-index: 1000;
 }
+
+.drop-areas img {
+    border: 1px dashed #fff;
+}
+
+
+
+
+
 
 
 .drop-point {
