@@ -374,9 +374,9 @@ function showResults() {
                     </div>
 
                     <div class="sharing-buttons">
-                        <a href="https://wa.me/?text=Check%20out%20this%20quiz%20about%20South%20Korea!%20https://lucykim0921.github.io/Functions" target="_blank">
-                        <button>Share on WhatsApp</button></a>
-                        <button onclick="copyLinkToClipboard()">Copy Link</button>
+                            <a href="https://wa.me/?text=Check%20out%20this%20quiz%20about%20South%20Korea!%20https://lucykim0921.github.io/Functions" target="_blank">
+                            <button>Share on WhatsApp<i class="fa fa-whatsapp"></i></button></a>
+                        <button onclick="copyLinkToClipboard()">Copy Link<span class="logo">&#8599;</span></button>
                     </div>
                 </div>
          
