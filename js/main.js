@@ -353,17 +353,27 @@ function showResults() {
     const dataList = document.getElementById('data-list');
     dataList.innerHTML = `
         <div class="results">
-            <h1>Quiz Completed!</h1>
-            <p>You scored ${correctAnswersCount} out of ${questions.length} questions!</p>
-            <div class="buttons">
-                <button onclick="window.location.href='index.html'">Return Home</button>
 
-                <div class="sharing buttons">
-                    <a href="https://wa.me/?text=Check%20out%20this%20quiz%20about%20South%20Korea!%20https://lucykim0921.github.io/Functions" target="_blank">
-                    <button>Share on WhatsApp</button></a>
-                    <button onclick="copyLinkToClipboard()">Copy Link to Clipboard</button>
+                <img src="images/border.png" class="corner-result" id="result-top-left">
+                <img src="images/border.png" class="corner-result" id="result-top-left">
+                <img src="images/border.png" class="corner-result" id="result-top-right">
+                <img src="images/border.png" class="corner-result" id="result-bottom-left">
+                <img src="images/border.png" class="corner-result" id="result-bottom-right">
+
+                <h1>Quiz Completed!</h1>
+                <p>You scored <span class="answer-count">${correctAnswersCount}</span> out of <span class="answer-count">${questions.length}</span> questions.</p>
+                <div class="buttons">
+                    <div class="home-button">
+                        <button onclick="window.location.href='index.html'">Return Home</button>
+                    </div>
+
+                    <div class="sharing-buttons">
+                        <a href="https://wa.me/?text=Check%20out%20this%20quiz%20about%20South%20Korea!%20https://lucykim0921.github.io/Functions" target="_blank">
+                        <button>Share on WhatsApp</button></a>
+                        <button onclick="copyLinkToClipboard()">Copy Link</button>
+                    </div>
                 </div>
-            </div>
+         
         </div>
     `;
 }

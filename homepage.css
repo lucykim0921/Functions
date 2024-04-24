@@ -37,9 +37,6 @@ html,body {
     height: 70vh;
     display: flex;
     flex-direction: column;
-    /* justify-content: center;
-    align-items: center;
-    text-align: center; */
 }
 
 .background-image {
@@ -48,8 +45,6 @@ html,body {
     left: 0;
     width: 100%;
     height: 100%;
-    /* z-index: 1;  */
-    /* overflow: hidden; */
 }
 
 #background {
@@ -73,11 +68,16 @@ html,body {
 .background-text {
     position: absolute;
     bottom: 10px;
-    /* z-index: 3;  */
     padding: 90px 20px 0px 25px;
     margin-bottom: 30px;
     max-width: 600px;
-    /* width: 100%; */
+}
+
+.footnote {
+    font-family: NotoSerifKRLight;
+    font-size: 13px;
+    position: absolute;
+    padding: 20px;
 }
 
 .background-text h1 {
@@ -90,6 +90,39 @@ html,body {
     margin-bottom: 30px;
     font-size: 15px;
     font-family: NotoSerifKRSemiBold;
+}
+
+.intro-start-button {
+    font-family: NotoSerifKRLight;
+    font-size: 17px;
+    cursor: pointer;
+    position: relative;
+    transition: 1s ease-in-out;
+}
+
+.arrow-mobile {
+    font-size: 25px;
+    font-family: NotoSerifKRSemiBold;
+    display: inline-block;
+}
+
+.arrow-web {
+    display: none;
+}
+
+@keyframes moveUpDown {
+    0%, 100% {
+        transform: translateY(0); 
+    }
+    50% {
+        transform: translateY(10px); 
+    }
+}
+
+.intro-start-button .arrow-mobile {
+    display: inline-block; 
+    transform: translateY(0); 
+    animation: moveUpDown 1s ease-in-out infinite; 
 }
 
 
@@ -156,7 +189,10 @@ select, input {
     padding: 10px;
     border: 1px dashed #fff;
     margin-bottom: 10px;
-    /* box-shadow: inset 3px -3px 20px rgba(0,0,0,0.5); */
+}
+
+select {
+    cursor: pointer;
 }
 
 .start-button-container {
@@ -178,6 +214,7 @@ select, input {
         background-size: 200% 100%;
         background-position: 100% center;
         transition: background-position 0.5s ease, color 0.5s ease;
+        cursor: pointer;
     }
     
     .start-button::before {
@@ -302,10 +339,19 @@ button:hover {
         max-width: 700px;
     }
 
+    .background-text {
+        bottom: -30px;
+    }
+
     #container {
         padding: 80px;
         max-width: 600px;
     }
+
+    .intro-start-button {
+        display: none;
+    }
+
 }
 
 @media (min-width: 1280px) {
