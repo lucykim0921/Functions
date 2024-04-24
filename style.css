@@ -376,8 +376,8 @@ section {
     border: 1px dashed #fff;
 }
 
-.drop-areas {
-    width: 100%;
+.drop-area, .drop-point {
+    z-index: 1000;
 }
 
 .drag-items {
@@ -405,6 +405,7 @@ section {
     justify-content: center;
     min-height: 100px;
 }
+
 
 .drop-point {
     /* padding: 1em; */
