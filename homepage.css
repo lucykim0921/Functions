@@ -365,11 +365,11 @@ button:hover {
 
     .footnote p {
         margin-right: 20px;
-        font-size: 18px;
+        font-size: 16px;
     }
     
     .footnote .fa-github {
-        font-size: 30px;
+        font-size: 28px;
         transition: 0.3s ease-in-out;
     }
 
