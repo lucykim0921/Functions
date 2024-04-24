@@ -281,9 +281,11 @@ function checkAllDroppedMatchName() {
         feedbackElement.textContent = 'Correct!';
         feedbackElement.className = 'feedback-correct';
         correctAnswersCount++;
+        clearInterval(timerId);
     } else {
         feedbackElement.textContent = 'Wrong answer!';
         feedbackElement.className = 'feedback-incorrect';
+        clearInterval(timerId);
     }
 
     addNextQuestionButton();
@@ -307,9 +309,11 @@ function checkAllDroppedInOrder() {
         feedbackElement.textContent = 'Correct!';
         feedbackElement.className = 'feedback-correct';
         correctAnswersCount++;
+        clearInterval(timerId);
     } else {
         feedbackElement.textContent = 'Wrong answer!';
         feedbackElement.className = 'feedback-incorrect';
+        clearInterval(timerId);
     }
 
     addNextQuestionButton();
