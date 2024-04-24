@@ -91,10 +91,18 @@ html,body {
     font-size: 25px;
 }
 
+@keyframes colorCycle {
+    0%, 100% { color: rgb(0, 0, 0); }
+    25% { color: rgb(154, 46, 0); }
+    50% { color: rgb(71, 14, 9); }
+    75% { color: rgb(132, 110, 86); }
+}
+
 .background-text h1 {
-    font-family: Ninja;
+    font-family: 'Ninja';
     font-size: 30px;
     margin-bottom: 10px;
+    animation: colorCycle 5s infinite linear;
 }
 
 .background-text p {
