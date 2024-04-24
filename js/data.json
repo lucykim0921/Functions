@@ -161,6 +161,30 @@
                     ],
                     "answer": "1950m",
                     "description": "Hallasan, also known as Mt. Halla, is a popular destination for climbers and takes approximately 8 to 10 hours for a round trip hike. Climbing this mountain is a common item on many South Koreans' bucket lists due to its challenging nature"
+                },
+
+                {
+                    "type": "match-name",
+                    "question": "Drag and drop to match where the images are taken!",
+                    "draggableItems": [
+                        {"text": "Jeju", "id": "Tteokbokki"},
+                        {"text": "Gimbap", "id": "Gimbap"},
+                        {"text": "Hotteok","id": "Hotteok"},
+                        {"text": "Pajeon","id": "Pajeon"}
+                    ],
+                    "dropAreas": [
+                        {"imagePath": "images/gimbap.png", "id": "Gimbap"},
+                        {"imagePath": "images/tteokbokki.jpeg", "id": "Tteokbokki"},
+                        {"imagePath": "images/pajeon.jpeg","id": "Pajeon"},
+                        {"imagePath": "images/hotteok.jpeg", "id": "Hotteok"}
+                    ],
+                    "answer": {
+                        "Tteokbokki": "Tteokbokki",
+                        "Gimbap": "Gimbap",
+                        "Hotteok": "Hotteok",
+                        "Pajeon": "Pajeon"
+                    },
+                    "description": "Drag each name to the correct image."
                 }
             ]
         },
@@ -473,9 +497,9 @@
                         {"text": "Pajeon","id": "Pajeon"}
                     ],
                     "dropAreas": [
+                        {"imagePath": "images/hotteok.jpeg", "id": "Hotteok"},
                         {"imagePath": "images/tteokbokki.jpeg", "id": "Tteokbokki"},
                         {"imagePath": "images/gimbap.png", "id": "Gimbap"},
-                        {"imagePath": "images/hotteok.jpeg", "id": "Hotteok"},
                         {"imagePath": "images/pajeon.jpeg","id": "Pajeon"}
                     ],
                     "answer": {
