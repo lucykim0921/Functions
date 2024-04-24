@@ -264,11 +264,14 @@ function handleNoResponse() {
     feedbackElement.className = 'feedback-incorrect';
 
     addNextQuestionButton();
+
 }
 
 
 // check answers for match name
 function checkAllDroppedMatchName() {
+    const quizItem = document.querySelector('.quiz');
+    const descriptionElement = quizItem.querySelector('.description');
     const dropAreas = document.querySelectorAll('.drop-area');
     let allCorrect = true;
     dropAreas.forEach(dropArea => {
@@ -279,6 +282,7 @@ function checkAllDroppedMatchName() {
             allCorrect = false;
         }
     });
+    
 
     const feedbackElement = document.querySelector('.feedback');
     if (allCorrect) {
@@ -289,6 +293,7 @@ function checkAllDroppedMatchName() {
     } else {
         feedbackElement.textContent = 'Wrong answer!';
         feedbackElement.className = 'feedback-incorrect';
+        descriptionElement.style.display = 'block';
         clearInterval(timerId);
     }
 
@@ -297,6 +302,8 @@ function checkAllDroppedMatchName() {
 
 // check answers - drop in order
 function checkAllDroppedInOrder() {
+    const quizItem = document.querySelector('.quiz');
+    const descriptionElement = quizItem.querySelector('.description');
     const dropPoints = document.querySelectorAll('.drop-point');
     let allCorrect = true;
 
@@ -317,6 +324,7 @@ function checkAllDroppedInOrder() {
     } else {
         feedbackElement.textContent = 'Wrong answer!';
         feedbackElement.className = 'feedback-incorrect';
+        descriptionElement.style.display = 'block';
         clearInterval(timerId);
     }
 
