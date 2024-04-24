@@ -5,7 +5,6 @@ let timerId;
 let correctAnswersCount = 0;
 let currentQuestion = null;
 
-
 // Function to shuffle quiz
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -148,13 +147,13 @@ function startTimer(seconds) {
 
     timerId = setInterval(() => {
         timeLeft -= 1;
-        timerElement.textContent = timeLeft;  // Update the visible countdown
+        timerElement.textContent = timeLeft;  
 
         if (timeLeft <= 0) {
             clearInterval(timerId);
             handleNoResponse();  // Handle noresponse (timeout)
         }
-    }, 1000); // Ensure the countdown decreases every second
+    }, 1000); // Miliseconds
 }
 
 
@@ -199,8 +198,6 @@ document.addEventListener('click', function(e) {
                     descriptionElement.style.display = 'block'; 
                 }        
 
-
-            // Determine the next action based on question number
             if (currentQuestionIndex < questions.length - 1) {
                 // Not the last question 
                 if (!quizItem.querySelector('.next-button')) {
@@ -503,6 +500,8 @@ function drop(event) {
         }
     }
 }
+
+
 
 
 

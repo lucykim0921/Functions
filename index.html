@@ -31,7 +31,6 @@
         <p>How well do you know about South Korea? Challenge your knowledge with our quizzes designed to entertain and enlighten. Discover more about our country and broaden your horizons as you delve in.</p>
       
         <button class="intro-start-button">Begin your journey<span class="arrow-mobile">&#8595;</span></button>
- 
 
       
     </section>
@@ -81,6 +80,13 @@
 
     <!-- Script -->
     <script defer src="js/main.js"></script>
+    <script>
+      document.querySelector('.intro-start-button').addEventListener('click', function() {
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth'
+        });
+    });</script>
 
   </body>
 </html>
