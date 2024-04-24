@@ -167,22 +167,22 @@
                     "type": "match-name",
                     "question": "Drag and drop to match where the images are taken!",
                     "draggableItems": [
-                        {"text": "Jeju", "id": "Tteokbokki"},
-                        {"text": "Gimbap", "id": "Gimbap"},
-                        {"text": "Hotteok","id": "Hotteok"},
-                        {"text": "Pajeon","id": "Pajeon"}
+                        {"text": "Jeju", "id": "Jeju"},
+                        {"text": "Seoul", "id": "Seoul"},
+                        {"text": "Busan","id": "Busan"},
+                        {"text": "Gyeongju","id": "Gyeongju"}
                     ],
                     "dropAreas": [
-                        {"imagePath": "images/gimbap.png", "id": "Gimbap"},
-                        {"imagePath": "images/tteokbokki.jpeg", "id": "Tteokbokki"},
-                        {"imagePath": "images/pajeon.jpeg","id": "Pajeon"},
-                        {"imagePath": "images/hotteok.jpeg", "id": "Hotteok"}
+                        {"imagePath": "images/busan.png", "id": "Busan"},
+                        {"imagePath": "images/jejudo.jpeg", "id": "Jeju"},
+                        {"imagePath": "images/gyeongju.png","id": "Gyeongju"},
+                        {"imagePath": "images/seoul.png", "id": "Seoul"}
                     ],
                     "answer": {
-                        "Tteokbokki": "Tteokbokki",
-                        "Gimbap": "Gimbap",
-                        "Hotteok": "Hotteok",
-                        "Pajeon": "Pajeon"
+                        "Jeju": "Jeju",
+                        "Seoul": "Seoul",
+                        "Busan": "Busan",
+                        "Gyeongju": "Gyeongju"
                     },
                     "description": "Drag each name to the correct image."
                 }
