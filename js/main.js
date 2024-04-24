@@ -62,7 +62,6 @@ function displayQuestionsOnLoad() {
 // Render each question
 function renderQuestion(question) {
     window.scrollTo(0, 0);
-    
     currentQuestion = question;
     const dataList = document.getElementById('data-list');
     dataList.innerHTML = ''; 

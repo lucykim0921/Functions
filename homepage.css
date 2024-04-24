@@ -74,10 +74,21 @@ html,body {
 }
 
 .footnote {
+    display: flex;
     font-family: NotoSerifKRLight;
-    font-size: 13px;
+    font-size: 12px;
     position: absolute;
-    padding: 20px;
+    padding: 25px;
+    align-items: center;
+    justify-content: center;
+}
+
+.footnote p {
+    margin-right: 10px;
+}
+
+.footnote .fa-github {
+    font-size: 25px;
 }
 
 .background-text h1 {
@@ -350,6 +361,21 @@ button:hover {
 
     .intro-start-button {
         display: none;
+    }
+
+    .footnote p {
+        margin-right: 20px;
+        font-size: 18px;
+    }
+    
+    .footnote .fa-github {
+        font-size: 30px;
+        transition: 0.3s ease-in-out;
+    }
+
+    .footnote .fa-github:hover {
+        font-size: 33px;
+        color: rgb(113, 10, 177);
     }
 
 }
