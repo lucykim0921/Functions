@@ -588,6 +588,10 @@ section {
         max-width: 75%;
     }
 
+    .answer, .drag-item {
+        font-size: 19px;
+    }
+
     .option img {
         max-width: 120px;
     }
