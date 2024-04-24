@@ -469,7 +469,7 @@ function drop(event) {
 
     if (!dropTarget) return; 
 
-    // Match-name - allow dropping into any drop area
+    // Match-name - allow dropping into all 4 (regardless of the coorrectness)
     if (dropTarget.classList.contains('drop-area')) {
         if (draggedElement.id.startsWith('drag-')) {
             // Allows dropping on an already occupied drop area, removes existing if present
