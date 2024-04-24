@@ -174,7 +174,7 @@
                     ],
                     "dropAreas": [
                         {"imagePath": "images/busan.png", "id": "Busan"},
-                        {"imagePath": "images/jejudo.jpeg", "id": "Jeju"},
+                        {"imagePath": "images/jejudo.png", "id": "Jeju"},
                         {"imagePath": "images/gyeongju.png","id": "Gyeongju"},
                         {"imagePath": "images/seoul.png", "id": "Seoul"}
                     ],
